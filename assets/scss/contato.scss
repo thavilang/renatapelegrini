@@ -1,2 +1,56 @@
 @import "style";
 
+main{
+    
+}
+
+
+
+main{
+    position: relative;
+    @include background-config(no-repeat, center, cover, #000);
+    background-attachment: fixed;
+    min-height: calc(100vh - 80px);
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+
+    @include media-breakpoint-up(md){
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    @include media-breakpoint-down(md){
+        padding-top: 15vh;
+    }
+
+    > *{
+        position: relative;
+        z-index: 2;
+    }
+
+    h1{
+        margin-bottom: 35px;
+    }
+    
+    .infos{
+        a{
+            display: block;
+    
+            & + a{
+                margin-top: 10px;
+            }
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &::before{
+        content: " ";
+        @extend %fundo_absoluto;
+        background-color: rgba(#000, 0.4);
+        z-index: 1;
+    }
+}
