@@ -1,0 +1,62 @@
+.fs22 {
+    font-size: var(--fonte-22px);
+    line-height: 1.22em;
+}
+
+.fs24 {
+    font-size: var(--fonte-24px);
+    line-height: 1.22em;
+}
+
+.fs28 {
+    font-size: var(--fonte-28px);
+    line-height: 1.22em;
+}
+
+.fs32 {
+    font-size: var(--fonte-24px);
+    line-height: 1.22em;
+}
+
+.fs40 {
+    font-size: var(--fonte-40px);
+    line-height: 1.22em;
+}
+
+.fw400{
+    font-weight: 400;
+}
+
+.op6 {
+    opacity: 0.6;
+}
+
+.txtupper {
+    text-transform: uppercase;
+}
+
+.txtcenter{
+    text-align: center;
+}
+
+.padrao-botao {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: fit-content;
+    padding: 0 20px;
+    min-width: 170px;
+    min-height: 51px;
+    background: #000000;
+    font-weight: 500;
+    font-size: var(--fonte-16px);
+    line-height: 19px;
+    color: #FFFFFF;
+    transition: background-color 0.3s;
+
+    &:hover{
+        background-color: #646464;
+    }
+}

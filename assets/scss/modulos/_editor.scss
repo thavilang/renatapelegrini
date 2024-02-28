@@ -1,6 +1,6 @@
 .editor {
-    line-height: 1.4em;
-    letter-spacing: -0.01em;
+    color: #363636;
+    line-height: 1.6em;
 
     strong, b {
         font-weight: 600;
@@ -14,19 +14,17 @@
     ul,
     ol,
     blockquote {
-        line-height: 1.4em;
-        letter-spacing: -0.01em;
+        line-height: 1.6em;
 
         &+p,
         &+ol,
         &+ul,
         &+blockquote {
-            margin-top: 1.25em;
+            margin-top: 1.7em;
         }
     }
 
     blockquote {
-        color: $cor_site;
         font-size: var(--fonte-25px);
         font-weight: 600;
         line-height: 1.4em;
@@ -34,7 +32,7 @@
 
         @include media-breakpoint-up(lg){
             padding-left: 20px;
-            border-left: 4px rgba($cor_secundaria-variacao, 0.5) solid;
+            border-left: 4px currentColor solid;
         }
     }
 
@@ -66,11 +64,7 @@
     h4,
     h5,
     h6 {
-        font-family: $fonte_titulos;
-        line-height: 1.4em;
-        margin-bottom: 0.6em;
-        margin-top: 1.8em;
-        letter-spacing: -0.01em;
+        @extend .fw400, .txtupper;
 
         &:first-child {
             margin-top: 0;
@@ -82,15 +76,15 @@
     }
 
     h2 {
-        font-size: var(--fonte-25px);
+        @extend .fs32;
     }
 
     h3 {
-        font-size: var(--fonte-20px);
+        @extend .fs24;
     }
 
-    h4 {
-        font-size: var(--fonte-18px);
+    h4, h5, h6 {
+        @extend .fs22;
     }
 
     iframe,
@@ -98,21 +92,20 @@
         display: block;
         width: 100%;
         height: unset !important;
-        margin: 35px 0;
+        margin: 2em 0;
     }
 
     iframe {
         width: 100% !important;
-        margin: 2.7em 0;
+        margin: 2em 0;
         aspect-ratio: 16 / 9;
     }
 
     a {
-        text-decoration: underline;
-        transition: color 0.2s;
+        font-style: italic;
 
         &:hover {
-            color: $cor_hovers;
+            text-decoration: underline;
         }
     }
 
@@ -120,7 +113,7 @@
         display: block;
         width: 100%;
         margin: 3em 0;
-        background-color: $cor_auxiliar;
+        background-color: currentColor;
         height: 2px;
         border: none;
     }
