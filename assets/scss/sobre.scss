@@ -1,0 +1,18 @@
+@import "style";
+
+#sobre{
+    .content{
+        padding: 130px 0 150px;
+        @include media-breakpoint-down(lg){
+            padding: 25px 0 40px;
+        }
+        .editor{
+            margin: 40px 0 40px;
+        }
+    }
+    .imagem{
+        img{
+            width: calc(100% + var(--tamanho-borda));
+        }
+    }
+}

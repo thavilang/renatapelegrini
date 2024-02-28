@@ -35,9 +35,10 @@
     --fonte-28px: 1.55rem;
     --fonte-32px: 1.778rem;
     --fonte-40px: 2.22rem;
-
+    
     @include media-breakpoint-down(sm){
         --fonte-13px: 0.625rem;
+        --fonte-40px: 0.875rem;
     }
 }
 
