@@ -13,6 +13,7 @@ html {
 body {
     font-family: $fonte_padrao;
     color: $cor_fonte;
+    font-weight: 300;
     font-display: swap;
     font-size: 1rem;
 }
@@ -63,5 +64,6 @@ input {
 }
 
 @import "padroes";
+@import "modulos/editor";
 @import "modulos/header";
 @import "modulos/footer";
