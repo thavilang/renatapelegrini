@@ -13,7 +13,7 @@ function site_add_scripts()
 {
     wp_enqueue_script('swiper', get_template_directory_uri() . '/assets/js/plugins/swiper.min.js', array(), "", true);
     wp_enqueue_script('toggle', get_template_directory_uri() . '/assets/js/plugins/toggle.js', array(), "", true);
-    if (is_page_template('page-produto.php')) {
+    if (is_page_template('page-textos.php')) {
         wp_enqueue_script('abas', get_template_directory_uri() . '/assets/js/plugins/abas.js', array(), "", true);
     }
     wp_enqueue_script('script', get_template_directory_uri() . '/assets/js/script.js', array(), time(), true);
@@ -40,7 +40,7 @@ function auto_get_file_path()
     $nome_arquivo = $conteudo[1][0];
 
     if (is_front_page()) {
-        $nome_arquivo = 'home';
+        $nome_arquivo = 'index';
     } else if ($nome_arquivo == '' || $nome_arquivo == null) {
         $nome_arquivo = 'index';
     }
@@ -52,7 +52,7 @@ function auto_get_file_path()
         wp_enqueue_style($nome_arquivo, get_template_directory_uri() . '/assets/css/' . $nome_arquivo . '.css', '', time(), 'all');
         wp_reset_query();
     } else {
-        var_dump("<!-- ERROR LOG: O arquivo CSS não existe -->.");
+        echo "<!-- ERROR LOG: O arquivo CSS não existe -->.";
         wp_reset_query();
     }
 
@@ -60,7 +60,7 @@ function auto_get_file_path()
         wp_enqueue_script($nome_arquivo, get_template_directory_uri() . '/assets/js/' . $nome_arquivo . '.js', '', time(), true);
         wp_reset_query();
     } else {
-        var_dump("<!-- ERROR LOG: O arquivo JS não existe. -->");
+        echo "<!-- ERROR LOG: O arquivo JS não existe. -->";
         wp_reset_query();
     }
 }
