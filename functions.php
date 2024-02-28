@@ -67,6 +67,47 @@ function auto_get_file_path()
 
 add_action('wp_enqueue_scripts', 'auto_get_file_path');
 
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+// ************* Remove default Posts type since no blog *************
+// Remove side menu
+add_action('admin_menu', 'remove_default_post_type');
+function remove_default_post_type()
+{
+    remove_menu_page('edit.php');
+    remove_menu_page('edit-comments.php');
+    $author = wp_get_current_user();
+    if (isset($author->roles[0])) {
+        $current_role = $author->roles[0];
+    } else {
+        $current_role = 'no_role';
+    }
+    if ('editor' == $current_role) {
+        $screen = get_current_screen();
+        $base   = $screen->id;
+        remove_menu_page('tools.php');
+        // remove_menu_page('wpseo_workouts');
+        if ('toplevel_page_wpcf7' == $base) {
+            wp_die('Sem permissão para acessar esta página.');
+        }
+    }
+}
+// Remove +New post in top Admin Menu Bar
+add_action('admin_bar_menu', 'remove_default_post_type_menu_bar', 999);
+function remove_default_post_type_menu_bar($wp_admin_bar)
+{
+    $wp_admin_bar->remove_node('new-post');
+    $wp_admin_bar->remove_node('new-content');
+    $wp_admin_bar->remove_node('comments');
+    // $wp_admin_bar->remove_node('wpseo-menu'); 
+}
+// Remove Quick Draft Dashboard Widget
+add_action('wp_dashboard_setup', 'remove_draft_widget', 999);
+function remove_draft_widget()
+{
+    remove_meta_box('dashboard_quick_press', 'dashboard', 'side');
+}
+
 /* Remove the h1 tag from the WordPress editor. */
 function my_format_TinyMCE($in)
 {
