@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+    --tamanho-container: 100vw;
+
+    @include media-breakpoint-up(sm) {
+        --tamanho-container: 540px;
+    }
+
+    @include media-breakpoint-up(md) {
+        --tamanho-container: 720px;
+    }
+
+    @include media-breakpoint-up(lg) {
+        --tamanho-container: 960px;
+    }
+
+    @include media-breakpoint-up(xl) {
+        --tamanho-container: 1140px;
+    }
+
+    @include media-breakpoint-up(xxl) {
+        --tamanho-container: 1141px;
+    }
+
+    --tamanho-borda: calc(calc(100vw - var(--tamanho-container) + #{$grid-gutter-width}) / 2);
+
+    --tamanho-coluna: calc(calc(var(--tamanho-container) - 30px) / #{$grid-columns});
+
+    --fonte-13px: 0.72rem;
+    --fonte-16px: 0.889rem;
+    --fonte-18px: 1rem;
+    --fonte-22px: 1.22rem;
+    --fonte-24px: 1.33rem;
+    --fonte-28px: 1.55rem;
+    --fonte-32px: 1.778rem;
+    --fonte-40px: 2.22rem;
+}
+
+$fonte_padrao: "Inter", sans-serif;
+
+$cor_fonte: #0C0D14;
+
+
+%fundo_absoluto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+%centralizar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin background-config($repeat, $position, $size, $color) {
+    background-repeat: $repeat;
+    background-position: $position;
+    background-size: $size;
+    background-color: $color;
+}

@@ -1,0 +1,22 @@
+{
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "compressed",
+            "extensionName": ".css",
+            "savePath": "/assets/css/"
+        }
+    ],
+    "liveSassCompile.settings.excludeList": ["**/node_modules/**", ".vscode/**"],
+    "liveSassCompile.settings.generateMap": true,
+    "liveSassCompile.settings.autoprefix": ["defaults"],
+    "editor.formatOnSave": false,
+    "[css]": {
+        "editor.formatOnSave": false
+    },
+    "[scss]": {
+        "editor.formatOnSave": false
+    },
+    "[php]": {
+        "editor.formatOnSave": true
+    },
+}
