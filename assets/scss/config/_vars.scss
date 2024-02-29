@@ -36,17 +36,30 @@
     --fonte-28px: 1.55rem;
     --fonte-32px: 1.778rem;
     --fonte-40px: 2.22rem;
-    
-    @include media-breakpoint-down(sm){
-        --fonte-11px: 0.687rem;
-        --fonte-13px: 0.625rem;
-        --fonte-16px: 0.5625rem;
-        --fonte-24px: 0.875rem;
-        --fonte-40px: 0.875rem;
+
+    @include media-breakpoint-down(md) {
+        --fonte-12px: 0.8rem;
+        --fonte-13px: 0.8rem;
+        --fonte-16px: 0.9rem;
+        --fonte-18px: 1rem;
+        --fonte-22px: 1.2rem;
+        --fonte-24px: 1.3rem;
+        --fonte-28px: 1.35rem;
+        --fonte-32px: 1.4rem;
+        --fonte-40px: 1.6rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+        --fonte-22px: 1.05rem;
+        --fonte-24px: 1.1rem;
+        --fonte-28px: 1.15rem;
+        --fonte-32px: 1.2rem;
+        --fonte-40px: 1.3rem;
     }
 }
 
-$fonte_padrao: "Inter", sans-serif;
+$fonte_padrao: "Inter",
+sans-serif;
 
 $cor_fonte: #0C0D14;
 

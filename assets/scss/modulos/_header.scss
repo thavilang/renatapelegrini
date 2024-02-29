@@ -6,23 +6,25 @@ header {
         font-size: 0px;
         color: transparent;
 
-        body:not(.page-id-67) &{
+        body:not(.page-id-67) & {
             position: fixed;
             top: 0;
             left: calc(5.2vw + #{$grid-gutter-width / 2});
             height: 80px;
         }
 
-        @include media-breakpoint-down(md){
-            left: #{$grid-gutter-width / 2};
-            height: 70px;
+        @include media-breakpoint-down(md) {
+            body:not(.page-id-67) & {
+                left: #{$grid-gutter-width / 2};
+                height: 70px;
+            }
         }
 
         svg {
             width: 250px;
             height: 22px;
 
-            @include media-breakpoint-down(md){
+            @include media-breakpoint-down(md) {
                 width: 165px;
                 height: 15px;
             }
@@ -39,7 +41,7 @@ header {
         padding: 28px 0;
         transition: opacity 0.5s;
 
-        @include media-breakpoint-down(md){
+        @include media-breakpoint-down(md) {
             right: #{$grid-gutter-width / 2};
             top: 0;
             left: 0;
@@ -88,7 +90,7 @@ header {
         color: #B3B3B3;
         transition: color 0.2s, background-color 0.2s, top 0.2s, opacity 0.2s;
 
-        @include media-breakpoint-down(md){
+        @include media-breakpoint-down(md) {
             right: calc(#{$grid-gutter-width / 2} - 24px);
             width: 70px;
             height: 70px;
@@ -106,7 +108,7 @@ header {
                 margin-top: 4px;
             }
 
-            @include media-breakpoint-down(md){
+            @include media-breakpoint-down(md) {
                 width: 22px;
                 height: 4px;
 
@@ -132,7 +134,7 @@ header {
                     transform: rotate(-45deg);
                     margin-top: -6px;
 
-                    @include media-breakpoint-down(md){
+                    @include media-breakpoint-down(md) {
                         margin-top: -4px;
                     }
                 }
@@ -155,12 +157,12 @@ header {
 
         nav.aberto {
             transition: opacity 0.3s;
-    
+
             ul {
                 display: flex;
                 align-items: center;
                 margin: 0 -12px;
-    
+
                 a {
                     display: block;
                     font-weight: 300;
@@ -169,14 +171,15 @@ header {
                     text-transform: uppercase;
                     padding: 0 12px;
 
-                    &:hover{
+                    &:hover {
                         text-decoration: underline;
                     }
                 }
             }
         }
 
-        body:not(.home) &:not(.scroll), body.page-id-67 & {
+        body:not(.home) &:not(.scroll),
+        body.page-id-67 & {
             .toggle-menu {
                 opacity: 0;
                 z-index: -1;
@@ -194,8 +197,8 @@ header {
         }
     }
 
-    @include media-breakpoint-down(xl){
-        nav.aberto{
+    @include media-breakpoint-down(xl) {
+        nav.aberto {
             display: none;
         }
     }
