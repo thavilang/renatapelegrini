@@ -1,0 +1,94 @@
+@import "plugins/abas";
+@import "style";
+
+
+#textos{
+    padding: 130px 0 150px;
+    @include media-breakpoint-down(lg){
+        padding: 40px 0 100px;
+    }
+    [js-bloco]{
+        border-left: 8px solid #0C0D14;
+        border-top: 8px solid #0C0D14;
+        padding: 32px 0 0 34px;
+        margin-left: 30px;
+        min-height: 100%;
+    }
+    [js-bloco-ativo]{
+        @include media-breakpoint-down(lg){
+            display: none;
+        }
+    }
+    [js-btn-bloco]{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        color: #B6B6B6;
+        padding: 0 0 40px;
+        &+[js-btn-bloco]{
+            border-top: 1px solid #BCBCBC;
+            padding: 40px 0;
+            &:last-of-type{
+                padding: 40px 0 0;
+            }
+        }
+        &.ativo:not(:first-child){
+            border-top: 1px solid #0C0D14;
+            color: #0C0D14;
+        }
+        &:hover{
+            color: #0C0D14;
+            &+[js-btn-bloco]{
+                border-top: 1px solid #0C0D14
+            }
+        }
+        h2{
+            margin-bottom: 24px;
+            max-width: 25ch;
+            text-align: left;
+
+        }
+        p{
+            width: 100%;
+            text-align: right;
+            font-size: var(--fonte-16px);
+        }
+    }
+    .inativo{
+        [js-btn-bloco]{
+            color: #0C0D14;
+            &+[js-btn-bloco]{
+                border-top: 1px solid #0C0D14
+            }
+        }
+    }
+
+    @include media-breakpoint-down(lg){
+        .btn-mobile{
+            display: flex;
+            flex-direction: column;
+            .box{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                padding: 0 0 23px;
+                &+.box{
+                    border-top: 1px solid #0C0D14;
+                    padding: 23px 0;
+                    &:last-of-type{
+                        padding: 23px 0 0;
+                    }
+                }
+                h2{
+                    max-width: 25ch;
+                    text-align: left;
+                }
+                p{
+                    width: 100%;
+                    text-align: right;
+                    font-size: var(--fonte-16px);
+                }
+            }
+        }
+    }
+}

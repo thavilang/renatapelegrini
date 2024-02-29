@@ -13,7 +13,7 @@ function site_add_scripts()
 {
     wp_enqueue_script('swiper', get_template_directory_uri() . '/assets/js/plugins/swiper.min.js', array(), "", true);
     wp_enqueue_script('toggle', get_template_directory_uri() . '/assets/js/plugins/toggle.js', array(), "", true);
-    if (is_page_template('page-produto.php')) {
+    if (is_page_template('page-textos.php')) {
         wp_enqueue_script('abas', get_template_directory_uri() . '/assets/js/plugins/abas.js', array(), "", true);
     }
     wp_enqueue_script('script', get_template_directory_uri() . '/assets/js/script.js', array(), time(), true);
@@ -27,22 +27,28 @@ add_action('wp_enqueue_scripts', 'site_add_scripts');
 
 function auto_get_file_path()
 {
-    $current_post_id = get_queried_object_id();
-
+    $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    $current_post_id = url_to_postid($url);
+    
     $tamplate_name = get_page_template($current_post_id);
+    
+    if (is_single()) {
+        $nome_arquivo = get_post_type($current_post_id);
 
-    preg_match_all('/page-(.+).php/s', $tamplate_name, $conteudo);
+    } else {
+        preg_match_all('/page-(.+).php/s', $tamplate_name, $conteudo);
 
-    if (empty($conteudo[0])) {
-        return;
-    }
+        if (empty($conteudo[0])) {
+            return;
+        }
 
-    $nome_arquivo = $conteudo[1][0];
+        $nome_arquivo = $conteudo[1][0];
 
-    if (is_front_page()) {
-        $nome_arquivo = 'home';
-    } else if ($nome_arquivo == '' || $nome_arquivo == null) {
-        $nome_arquivo = 'index';
+        if (is_front_page()) {
+            $nome_arquivo = 'index';
+        } else if ($nome_arquivo == '' || $nome_arquivo == null) {
+            $nome_arquivo = 'index';
+        }
     }
 
     $fileCSS = get_template_directory() . '/assets/css/' . $nome_arquivo . '.css';
@@ -52,7 +58,7 @@ function auto_get_file_path()
         wp_enqueue_style($nome_arquivo, get_template_directory_uri() . '/assets/css/' . $nome_arquivo . '.css', '', time(), 'all');
         wp_reset_query();
     } else {
-        var_dump("<!-- ERROR LOG: O arquivo CSS não existe -->.");
+        echo "<!-- ERROR LOG: O arquivo CSS não existe -->.";
         wp_reset_query();
     }
 
@@ -60,7 +66,7 @@ function auto_get_file_path()
         wp_enqueue_script($nome_arquivo, get_template_directory_uri() . '/assets/js/' . $nome_arquivo . '.js', '', time(), true);
         wp_reset_query();
     } else {
-        var_dump("<!-- ERROR LOG: O arquivo JS não existe. -->");
+        echo "<!-- ERROR LOG: O arquivo JS não existe. -->";
         wp_reset_query();
     }
 }
