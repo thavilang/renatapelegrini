@@ -30,20 +30,31 @@ function auto_get_file_path()
     $current_post_id = get_queried_object_id();
 
     $tamplate_name = get_page_template($current_post_id);
+    $modeloPersonalizado = get_post_meta($current_post_id, '_wp_page_template', true);
 
-    preg_match_all('/page-(.+).php/s', $tamplate_name, $conteudo);
+    if ($modeloPersonalizado !== 'default') {
+        if (!is_single()) {
+            return;
+        }
 
-    if (empty($conteudo[0])) {
-        return;
+        $nome_arquivo = get_post_type($current_post_id);
+    } else {
+        preg_match_all('/page-(.+).php/s', $tamplate_name, $conteudo);
+
+        if (empty($conteudo[0])) {
+            return;
+        }
+
+        $nome_arquivo = $conteudo[1][0];
+
+        if (is_front_page()) {
+            $nome_arquivo = 'index';
+        } else if ($nome_arquivo == '' || $nome_arquivo == null) {
+            $nome_arquivo = 'index';
+        }
     }
 
-    $nome_arquivo = $conteudo[1][0];
 
-    if (is_front_page()) {
-        $nome_arquivo = 'index';
-    } else if ($nome_arquivo == '' || $nome_arquivo == null) {
-        $nome_arquivo = 'index';
-    }
 
     $fileCSS = get_template_directory() . '/assets/css/' . $nome_arquivo . '.css';
     $fileJS = get_template_directory() . '/assets/js/' . $nome_arquivo . '.js';
