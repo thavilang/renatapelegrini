@@ -5,6 +5,9 @@ function site_add_styles()
     if (is_single()) {
         wp_enqueue_style('css-single', get_template_directory_uri() . '/assets/css/single.css', array(), '',  'all');
     }
+    if (is_404()) {
+        wp_enqueue_style('404', get_template_directory_uri() . '/assets/css/404.css', '', time(), 'all');
+    }
 };
 add_action('wp_enqueue_scripts', 'site_add_styles');
 
@@ -19,8 +22,8 @@ function site_add_scripts()
     wp_enqueue_script('animacoes', get_template_directory_uri() . '/assets/js/animacoes.js', array(), time(), true);
     wp_enqueue_script('script', get_template_directory_uri() . '/assets/js/script.js', array(), time(), true);
 
-    if (is_404()) {
-        wp_enqueue_style('404', get_template_directory_uri() . '/assets/css/404.css', '', time(), 'all');
+    if (is_page('clipping')) {
+        wp_enqueue_script('ajaxScrolling', get_template_directory_uri() . '/assets/js/ajaxScrolling.js', array('jquery'), time(), true);
     }
 }
 add_action('wp_enqueue_scripts', 'site_add_scripts');
@@ -29,12 +32,11 @@ function auto_get_file_path()
 {
     $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     $current_post_id = url_to_postid($url);
-    
+
     $tamplate_name = get_page_template($current_post_id);
-    
+
     if (is_single()) {
         $nome_arquivo = get_post_type($current_post_id);
-
     } else {
         preg_match_all('/page-(.+).php/s', $tamplate_name, $conteudo);
 
@@ -149,3 +151,44 @@ function sprite($icon, $title = '', $sprite = 'sprite')
 {
     return '<svg role="img" aria-label="Ícone ' . $title . '"><title>' . $title . '</title><use xlink:href="' . get_template_directory_uri() . '/assets/images/' . $sprite . '.svg#' . $icon . '" /></svg>';
 }
+
+
+function more_ajax_scrolling()
+{
+    $page = (isset($_POST['pageNumber'])) ? $_POST['pageNumber'] : 1;
+
+    $posts_per_page = (isset($_POST['posts_per_page'])) ? $_POST['posts_per_page'] : 9;
+    $post_type = (isset($_POST['post_type'])) ? $_POST['post_type'] : 'posts';
+    $post_status = (isset($_POST['post_status'])) ? $_POST['post_status'] : 'publish';
+
+    header("Content-Type: text/html");
+
+    $args = array(
+        'post_type' => $post_type,
+        'posts_per_page' => $posts_per_page,
+        'post_status'      => $post_status,
+        'paged'    => $page,
+    );
+
+    $loop = new WP_Query($args);
+
+    $out = '';
+    $count = 0;
+    if ($loop->have_posts()) :  while ($loop->have_posts()) : $loop->the_post();
+            $count++;
+            ob_start(); // Inicia o buffer de saída
+            include 'elements/'. $_POST['element_item'] .'.php';
+            $out .= ob_get_clean(); // Captura o conteúdo do buffer e limpa o buffer
+        endwhile;
+    endif;
+    wp_reset_postdata();
+
+    $return = array();
+    $return['itens'] = $out;
+    $return['count'] = $count;
+
+    die(json_encode($return));
+}
+
+add_action('wp_ajax_nopriv_more_ajax_scrolling', 'more_ajax_scrolling');
+add_action('wp_ajax_more_ajax_scrolling', 'more_ajax_scrolling');
