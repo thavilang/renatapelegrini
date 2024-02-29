@@ -1,3 +1,5 @@
+<?php //Template Name: Textos?>
+
 <?php
 $args = array(
     'posts_per_page'   => -1,
@@ -49,7 +51,7 @@ $textos = get_posts($args); ?>
                 setup_postdata($post); ?>
                 <a class="box" href="<?php echo get_post_permalink($post->ID) ?>">
                     <h2 class="txtupper fs24"><?php echo get_the_title($post->ID) ?></h2>
-                    <p class="txtupper"><?php echo get_field('autor', $post->ID) ?></p>
+                    <p class="txtupper fw400"><?php echo get_field('autor', $post->ID) ?></p>
                 </a>
             <?php
             } // foreach ($textos as $post)

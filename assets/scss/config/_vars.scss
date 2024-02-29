@@ -27,6 +27,7 @@
 
     --tamanho-coluna: calc(calc(var(--tamanho-container) - 30px) / #{$grid-columns});
 
+    --fonte-12px: 0.667rem;
     --fonte-13px: 0.72rem;
     --fonte-16px: 0.889rem;
     --fonte-18px: 1rem;
@@ -37,6 +38,7 @@
     --fonte-40px: 2.22rem;
     
     @include media-breakpoint-down(sm){
+        --fonte-11px: 0.687rem;
         --fonte-13px: 0.625rem;
         --fonte-16px: 0.5625rem;
         --fonte-24px: 0.875rem;
