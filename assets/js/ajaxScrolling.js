@@ -1,3 +1,9 @@
+let array = document.querySelectorAll('.grid-clipping div')
+
+array.forEach(element => {
+	element.classList.remove('efeito-aparecer')
+});
+
 let ultimaChamada = 0;
 
 function verificarChamada(element) {
@@ -26,8 +32,7 @@ document.addEventListener("scroll", function (e) {
 	});
 });
 
-var posts_per_page = 0;
-var pageNumber = 0;
+var pageNumber = 1;
 
 function more_ajax_scrolling(element) {
 	jQuery(function ($) {
@@ -67,6 +72,15 @@ function more_ajax_scrolling(element) {
 				} else {
 					$(element).addClass("stopAjax");
 				}
+
+				var listaItens = document.querySelectorAll(
+					".efeito-aparecer:not(.aparecer)"
+				);
+
+				window.addEventListener("scroll", function () {
+					verificaVisibilidade(listaItens);
+				});
+				verificaVisibilidade(listaItens); 
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				$loader.html(jqXHR + " :: " + textStatus + " :: " + errorThrown);
@@ -75,3 +89,29 @@ function more_ajax_scrolling(element) {
 		return false;
 	});
 }
+
+
+function verificaVisibilidade(listaItens) {
+	listaItens.forEach(function (item) {
+		if (elementoVisivel(item)) {
+			item.classList.add("aparecer");
+		}
+	});
+}
+
+function elementoVisivel(elemento) {
+	var posicao = elemento.getBoundingClientRect();
+	var altura = window.innerHeight || document.documentElement.clientHeight;
+
+	// Verifica se pelo menos metade do elemento está visível
+	return posicao.top  / 2 < altura;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+	var listaItens = document.querySelectorAll(".efeito-aparecer");
+
+	window.addEventListener("scroll", function () {
+		verificaVisibilidade(listaItens);
+	});
+	verificaVisibilidade(listaItens); // Verifica a visibilidade dos itens ao carregar a página
+});
