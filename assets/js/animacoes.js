@@ -47,36 +47,3 @@ if (gsapAparecerDown) {
         }, 500);
     });
 }
-
-
-if (window.innerWidth >= 768) {
-    let barraFixa = document.querySelector('.navegacao-sessoes');
-    window.addEventListener("scroll", function() {
-        if (window.scrollY > barraFixa.closest('.navegacao-sessoes__box').offsetTop) {
-            barraFixa.classList.add("fixar");
-        } else {
-            barraFixa.classList.remove("fixar");
-        }
-    });
-
-    let bannerHome = document.querySelector('.banner-home');
-    if (bannerHome) {
-        let tlBannerHome = gsap.timeline({
-            ease: "power3",
-            duration: 0.6
-        });
-        window.addEventListener("load", (event) => {
-            tlBannerHome
-                .from(bannerHome.querySelector('.banner-home__content'), { autoAlpha: 0 })
-                .from(bannerHome.querySelector('.banner-home__marca-dagua'), { scale: 0.9, autoAlpha: 0 }, "-=0.3")
-                .from(bannerHome.querySelector('.sombra'), { autoAlpha: 0, xPercent: 60 }, "-=0.4")
-                .from(bannerHome.querySelector('.zo'), { autoAlpha: 0, yPercent: 60 }, "-=0.5")
-                .from(bannerHome.querySelector('.ti'), { autoAlpha: 0, xPercent: -60 }, "-=0.3")
-                .from(bannerHome.querySelector('.ne'), { autoAlpha: 0, yPercent: -60 }, "-=0.3")
-                .from(bannerHome.querySelector('.banner-home__titulo'), { autoAlpha: 0, xPercent: 10 }, "-=0.1")
-                .from(bannerHome.querySelector('.banner-home__content p'), { autoAlpha: 0, xPercent: 10 }, "-=0.3")
-                .from(bannerHome.querySelector('.video'), { autoAlpha: 0, duration: 0.8 }, "-=0.5")
-                .from(bannerHome.querySelector('.banner-home__seta'), { autoAlpha: 0, yPercent: -30 }, "-=0.2");
-        });
-    }
-}

@@ -7,6 +7,7 @@ footer{
         display: flex;
         justify-content: space-between;
         padding: 21px 0;
+        
         @include media-breakpoint-down(lg){
             padding: 21px 20px 19px;
         }
@@ -18,6 +19,10 @@ footer{
             letter-spacing: 0em;
             text-align: left;
             color: #00000066;
+
+            @include media-breakpoint-down(sm){
+                font-size: 9px;
+            }
         }
     }
 }

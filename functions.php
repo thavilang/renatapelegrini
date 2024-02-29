@@ -2,7 +2,6 @@
 
 function site_add_styles()
 {
-    wp_enqueue_style('fontes', get_template_directory_uri() . '/assets/fontes/stylesheet.css', array(), '',  'all');
     if (is_single()) {
         wp_enqueue_style('css-single', get_template_directory_uri() . '/assets/css/single.css', array(), '',  'all');
     }
@@ -12,12 +11,13 @@ add_action('wp_enqueue_scripts', 'site_add_styles');
 function site_add_scripts()
 {
     wp_enqueue_script('swiper', get_template_directory_uri() . '/assets/js/plugins/swiper.min.js', array(), "", true);
-    wp_enqueue_script('toggle', get_template_directory_uri() . '/assets/js/plugins/toggle.js', array(), "", true);
     if (is_page_template('page-textos.php')) {
         wp_enqueue_script('abas', get_template_directory_uri() . '/assets/js/plugins/abas.js', array(), "", true);
     }
+    wp_enqueue_script('ScrollTrigger', get_template_directory_uri() . '/assets/js/plugins/ScrollTrigger.min.js', array(), time(), true);
+    wp_enqueue_script('gsap', get_template_directory_uri() . '/assets/js/plugins/gsap.min.js', array(), time(), true);
+    wp_enqueue_script('animacoes', get_template_directory_uri() . '/assets/js/animacoes.js', array(), time(), true);
     wp_enqueue_script('script', get_template_directory_uri() . '/assets/js/script.js', array(), time(), true);
-    wp_enqueue_script('keep-insta', get_template_directory_uri() . '/assets/js/keep-insta-feed-cache.js', array(), time(), true);
 
     if (is_404()) {
         wp_enqueue_style('404', get_template_directory_uri() . '/assets/css/404.css', '', time(), 'all');
@@ -75,6 +75,15 @@ add_action('wp_enqueue_scripts', 'auto_get_file_path');
 
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
+
+if (function_exists('register_nav_menus')) {
+    register_nav_menus(
+        array(
+            'header-menu' => 'Header Menu'
+        )
+    );
+}
+
 // ************* Remove default Posts type since no blog *************
 // Remove side menu
 add_action('admin_menu', 'remove_default_post_type');

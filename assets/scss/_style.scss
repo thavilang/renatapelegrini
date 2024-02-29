@@ -16,6 +16,10 @@ body {
     font-weight: 300;
     font-display: swap;
     font-size: 1rem;
+
+    @include media-breakpoint-down(md){
+        padding-top: 70px;
+    }
 }
 
 button,
