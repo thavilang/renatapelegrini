@@ -62,3 +62,12 @@
         background-color: #646464;
     }
 }
+
+.efeito-aparecer{
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    &.aparecer{
+        opacity: 1;
+    }
+}

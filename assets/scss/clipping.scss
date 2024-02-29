@@ -12,7 +12,7 @@ main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: calc(var(--tamanho-coluna)*1) calc(var(--tamanho-coluna)*1.4);
-    margin-top: 50px;
+    margin-top: 40px;
 
     @include media-breakpoint-down(md){
         grid-template-columns: 1fr;
@@ -61,15 +61,11 @@ main {
             }
 
             &:nth-child(odd) a {
-                transform: translateY(-50px);
+                transform: translateY(-40px);
             }
 
             &:nth-child(even) a {
-                transform: translateY(50px);
-            }
-
-            &:nth-child(9n + 2) a {
-                margin-bottom: -100px;
+                transform: translateY(40px);
             }
 
             &:nth-child(9n + 2):not(.grande) {
@@ -84,7 +80,7 @@ main {
             }
 
             &:nth-child(9n + 6) a {
-                transform: translateY(-50px);
+                transform: translateY(-40px);
             }
 
             &:nth-child(9n + 7) {
@@ -94,7 +90,7 @@ main {
                 justify-content: center;
 
                 a {
-                    transform: translateY(-50px);
+                    transform: translateY(-40px);
                 }
             }
 
