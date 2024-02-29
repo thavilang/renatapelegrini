@@ -27,17 +27,14 @@ add_action('wp_enqueue_scripts', 'site_add_scripts');
 
 function auto_get_file_path()
 {
-    $current_post_id = get_queried_object_id();
-
+    $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    $current_post_id = url_to_postid($url);
+    
     $tamplate_name = get_page_template($current_post_id);
-    $modeloPersonalizado = get_post_meta($current_post_id, '_wp_page_template', true);
-
-    if ($modeloPersonalizado !== 'default') {
-        if (!is_single()) {
-            return;
-        }
-
+    
+    if (is_single()) {
         $nome_arquivo = get_post_type($current_post_id);
+
     } else {
         preg_match_all('/page-(.+).php/s', $tamplate_name, $conteudo);
 
@@ -53,8 +50,6 @@ function auto_get_file_path()
             $nome_arquivo = 'index';
         }
     }
-
-
 
     $fileCSS = get_template_directory() . '/assets/css/' . $nome_arquivo . '.css';
     $fileJS = get_template_directory() . '/assets/js/' . $nome_arquivo . '.js';
