@@ -38,6 +38,8 @@
     
     @include media-breakpoint-down(sm){
         --fonte-13px: 0.625rem;
+        --fonte-16px: 0.5625rem;
+        --fonte-24px: 0.875rem;
         --fonte-40px: 0.875rem;
     }
 }
