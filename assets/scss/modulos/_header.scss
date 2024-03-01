@@ -66,6 +66,10 @@ header {
             }
         }
 
+        .sub-menu{
+            display: none;
+        }
+
         &:not(.ativo) {
             opacity: 0;
             pointer-events: none;
@@ -158,7 +162,7 @@ header {
         nav.aberto {
             transition: opacity 0.3s;
 
-            ul {
+            > ul {
                 display: flex;
                 align-items: center;
                 margin: 0 -12px;
@@ -173,6 +177,52 @@ header {
 
                     &:hover {
                         text-decoration: underline;
+                    }
+                }
+
+                > li{
+                    position: relative;
+
+                    &.menu-item-has-children > a{
+                        display: flex;
+                        align-items: center;
+                        &::after{
+                            content: " ";
+                            position: relative;
+                            width: 10px;
+                            height: 10px;
+                            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.14434 1.06116L8.14435 1.06116C8.25042 0.941851 8.39774 0.871429 8.55506 0.871429C8.71237 0.871429 8.8597 0.941851 8.96577 1.06116C9.0714 1.17998 9.12857 1.33821 9.12857 1.50048C9.12857 1.66275 9.0714 1.82098 8.96577 1.9398L5.41082 5.93845C5.35841 5.99756 5.29531 6.04537 5.2247 6.07833C5.15402 6.11132 5.07761 6.12857 5 6.12857C4.92239 6.12857 4.84598 6.11132 4.77531 6.07833C4.70469 6.04537 4.64159 5.99756 4.58918 5.93845M8.14434 1.06116L4.68538 5.85315M8.14434 1.06116L8.14384 1.06173L5 4.6407M8.14434 1.06116L5.08557 4.73811M4.58918 5.93845L4.68538 5.85315M4.58918 5.93845L4.58929 5.93858L4.68538 5.85315M4.58918 5.93845L1.03423 1.9398C0.9286 1.82098 0.871428 1.66275 0.871428 1.50048C0.871428 1.33821 0.9286 1.17998 1.03423 1.06116C1.1403 0.941851 1.28763 0.871429 1.44494 0.871429C1.60226 0.871429 1.74958 0.941851 1.85565 1.06116L1.85616 1.06173L1.85616 1.06173L5 4.6407M4.68538 5.85315L1.13032 1.85437C1.04688 1.76051 1 1.63321 1 1.50048C1 1.36774 1.04688 1.24044 1.13032 1.14659C1.21376 1.05273 1.32694 1 1.44494 1C1.56295 1 1.67612 1.05273 1.75957 1.14659L4.91443 4.73811L5 4.6407M5 4.6407L5.08557 4.73811M5.08557 4.73811L8.24043 1.14659C8.32388 1.05273 8.43705 1 8.55506 1C8.67306 1 8.78624 1.05273 8.86968 1.14659C8.95312 1.24044 9 1.36774 9 1.50048C9 1.63321 8.95312 1.76051 8.86968 1.85437L5.31462 5.85315L5.08557 4.73811Z' fill='black' stroke='black' stroke-width='0.257143'/%3E%3C/svg%3E");
+                            @include background-config(no-repeat, center, contain, transparent);
+                            margin-left: 9px;
+                        }
+                    }
+
+                    .sub-menu{
+                        position: absolute;
+                        top: 100%;
+                        left: -8px;
+                        background-color: #FAFAFA;
+                        border-top: 1px #000 solid;
+                        padding: 12px 0;
+                        z-index: 999;
+                        min-width: 100%;
+                        transition: opacity 0.3s;
+    
+                        a{
+                            font-size: var(--fonte-16px);
+                            line-height: 1.2em;
+                            padding: 10px 20px;
+                        }
+                    }
+
+                    &.menu-item-404 .sub-menu{
+                        min-width: 240px;
+                    }
+
+                    &:not(:hover) .sub-menu{
+                        opacity: 0;
+                        visibility: hidden;
+                        pointer-events: none;
                     }
                 }
             }
@@ -198,7 +248,18 @@ header {
     }
 
     @include media-breakpoint-down(xl) {
-        nav.aberto {
+        nav.aberto{
+            display: none;
+        }
+    }
+    @include media-breakpoint-up(lg){
+        .menu-item-1042{
+            display: none;
+        }
+    }
+
+    @include media-breakpoint-down(lg){
+        .menu-item-404{
             display: none;
         }
     }
