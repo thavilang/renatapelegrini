@@ -8,6 +8,9 @@ function site_add_styles()
     if (is_404()) {
         wp_enqueue_style('404', get_template_directory_uri() . '/assets/css/404.css', '', time(), 'all');
     }
+    if (is_tax('categoria')) {
+        wp_enqueue_style('tax', get_template_directory_uri() . '/assets/css/exposicoes.css', '', time(), 'all');
+    }
 };
 add_action('wp_enqueue_scripts', 'site_add_styles');
 
@@ -26,6 +29,7 @@ function site_add_scripts()
     if (is_page('clipping')) {
         wp_enqueue_script('ajaxScrolling', get_template_directory_uri() . '/assets/js/ajaxScrolling.js', array('jquery'), time(), true);
     }
+
 }
 add_action('wp_enqueue_scripts', 'site_add_scripts');
 
