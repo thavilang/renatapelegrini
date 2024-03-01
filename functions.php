@@ -26,10 +26,7 @@ function site_add_scripts()
     wp_enqueue_script('galeria', get_template_directory_uri() . '/assets/js/galeria.js', array(), time(), true);
     wp_enqueue_script('script', get_template_directory_uri() . '/assets/js/script.js', array(), time(), true);
 
-    if (is_page('clipping')) {
-        wp_enqueue_script('ajaxScrolling', get_template_directory_uri() . '/assets/js/ajaxScrolling.js', array('jquery'), time(), true);
-    }
-
+    wp_enqueue_script('ajaxScrolling', get_template_directory_uri() . '/assets/js/ajaxScrolling.js', array('jquery'), time(), true);
 }
 add_action('wp_enqueue_scripts', 'site_add_scripts');
 
@@ -176,22 +173,23 @@ function more_ajax_scrolling()
         'paged'    => $page,
     );
 
+    $out = '';
+    $countFunctionAjax = 0;
+
     $loop = new WP_Query($args);
 
-    $out = '';
-    $count = 0;
     if ($loop->have_posts()) :  while ($loop->have_posts()) : $loop->the_post();
-            $count++;
-            ob_start(); // Inicia o buffer de saída
-            include 'elements/'. $_POST['element_item'] .'.php';
+            $countFunctionAjax++;
+            ob_start(); // Inicia o buffer de saída 
+            include 'elements/' . $_POST['element_item'] . '.php';
             $out .= ob_get_clean(); // Captura o conteúdo do buffer e limpa o buffer
         endwhile;
-    endif;
+    endif; 
     wp_reset_postdata();
 
     $return = array();
     $return['itens'] = $out;
-    $return['count'] = $count;
+    $return['count'] = $countFunctionAjax;
 
     die(json_encode($return));
 }
