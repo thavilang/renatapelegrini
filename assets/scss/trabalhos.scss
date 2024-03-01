@@ -1,28 +1,10 @@
 @import "style";
 @import "modulos/post";
 
-.trabalhos{
+.trabalhos {
     padding: 130px 0;
-}
 
-.box-mansory {
-    position: relative;
-}
-
-.post {
-    padding: 40px;
-
-    > div{
-        background-color: #000;
-    }
-
-    img {
-        display: block;
-        width: 100%;
-        transition: opacity 0.3s;
-    }
-
-    &:hover img{
-        opacity: 0.8;
+    @include media-breakpoint-down(lg){
+        padding: 20px 0 50px;
     }
 }
