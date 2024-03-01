@@ -1,1 +1,79 @@
 @import "style";
+
+#projetos{
+    // padding: 130px 0 80px;
+    .grid{
+        margin: 130px 0 150px;
+        &+.grid{
+            // border-top: 1px solid #0C0D14;
+        }
+        .bg-grid{
+            width: calc(100% + var(--tamanho-borda));
+            overflow: scroll;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+        .grid-scroll{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            .box{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+                min-width: 370px;
+                max-width: 370px;
+                min-height: 610px;
+                max-height: 610px;
+                background: #DFDFDF;
+                @include media-breakpoint-down(lg){
+                    min-width: 370px;
+                    max-width: 370px;
+                    min-height: 610px;
+                    max-height: 610px;
+                }
+                &+.box{
+                    margin-left: 30px;
+                }
+                span{
+                    font-size: var(--fonte-18px);
+                    line-height: 1.21em;
+                    color: #0C0D14;
+                    margin-bottom: 8px;
+                }
+                img{
+                    background: #DFDFDF;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        &.model-1{
+            .grid-scroll{
+                .box{
+                    &:nth-child(1){
+                        margin-top: 100px;
+                    }
+                    &:nth-child(2n){
+                        margin-top: 230px;
+                    }
+                    &:nth-child(2n+1):not(:nth-child(1)){
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+        &.model-2{
+            .grid-scroll{
+                .box{
+                    min-width: 370px;
+                    max-width: 370px;
+                    min-height: 320px;
+                    max-height: 320px;
+                }
+            }
+        }
+    }
+}
