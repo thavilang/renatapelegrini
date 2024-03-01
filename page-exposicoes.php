@@ -1,15 +1,13 @@
-<?php
-get_header();
-?>
+<?php get_header(); ?>
 
-<main class="trabalhos">
+<main class="exposicoes">
     <h1 class="hidden-text"><?php echo get_the_title(); ?></h1>
     <div class="container">
-        <div class="box-mansory ajaxScrooling" data-posts_per_page="6" data-post_type="trabalho" data-post_status="publish" data-element_item="post-item">
+        <div class="box-mansory ajaxScrooling" data-posts_per_page="6" data-post_type="exposicao" data-post_status="publish" data-element_item="post-item">
             <?php
             $args = array( 
                 'posts_per_page'   => 6,
-                'post_type'        => 'trabalho',
+                'post_type'        => 'exposicao',
                 'post_status'      => 'publish',
             );
             $textos = get_posts($args);

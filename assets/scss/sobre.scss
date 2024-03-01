@@ -9,10 +9,26 @@
         .editor{
             margin: 40px 0 40px;
         }
+        .padrao-botao{
+            @include media-breakpoint-down(sm){
+                width: 100%;
+            }
+        }
     }
     .imagem{
         img{
+            display: block;
             width: calc(100% + var(--tamanho-borda));
+
+            @include media-breakpoint-down(lg){
+                width: 100%;
+                margin-bottom: 50px;
+            }
+            @include media-breakpoint-down(sm){
+                width: 100vw;
+                margin-left: calc(var(--tamanho-borda) * -1);
+                margin-bottom: 0;
+            }
         }
     }
 }

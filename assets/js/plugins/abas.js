@@ -3,12 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
   gruposAbas.forEach((grupo) => {
     //seta os recursos iniciais de acessibilidade
     setarRecursosAcessibilidade(grupo);
-    //ativa o button caso o bloco ativo esteja setado, do contrário ativa o bloco 1
+    //ativa o button caso o bloco ativo esteja setado
     let elementoAtivo = grupo.getAttribute("js-bloco-ativo");
     if (elementoAtivo) {
       ativarBloco(grupo, elementoAtivo);
-    } else {
-      ativarBloco(grupo, "1");
+      gruposAbas.classList.remove('inativo');
     }
   });
   let btnNavegacao = document.querySelectorAll("[js-btn-bloco]");
@@ -64,6 +63,7 @@ function ativarBloco(grupo, idBlocoAtivar) {
   botaoAtivo.setAttribute("aria-selected", "true");
   botaoAtivo.setAttribute("tabindex", "-1");
   blocoAtivo.setAttribute("tabindex", "0");
+  grupo.classList.remove('inativo');
 }
 function AbaRandomId() {
   let s4 = () => {

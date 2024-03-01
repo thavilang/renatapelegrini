@@ -20,6 +20,7 @@ function site_add_scripts()
     wp_enqueue_script('ScrollTrigger', get_template_directory_uri() . '/assets/js/plugins/ScrollTrigger.min.js', array(), time(), true);
     wp_enqueue_script('gsap', get_template_directory_uri() . '/assets/js/plugins/gsap.min.js', array(), time(), true);
     wp_enqueue_script('animacoes', get_template_directory_uri() . '/assets/js/animacoes.js', array(), time(), true);
+    wp_enqueue_script('galeria', get_template_directory_uri() . '/assets/js/galeria.js', array(), time(), true);
     wp_enqueue_script('script', get_template_directory_uri() . '/assets/js/script.js', array(), time(), true);
 
     if (is_page('clipping')) {
