@@ -1,5 +1,3 @@
-<?php //Template Name: Textos?>
-
 <?php
 $args = array(
     'posts_per_page'   => -1,
@@ -10,47 +8,52 @@ $textos = get_posts($args); ?>
 
 <?php get_header(); ?>
 
-<main id="textos">
+<main>
     <h1 class="hidden-text"><?php echo get_the_title($post->ID) ?></h1>
     <div class="container">
-        <div js-bloco-ativo class="inativo">
-            <div class="row">
-                <div class="col-lg-5">
-                    <?php
-                    foreach ($textos as $key => $post) {
-                        setup_postdata($post); ?>
-                        <button js-btn-bloco="<?php echo $key + 1 ?>">
-                            <h2 class="txtupper fs24"><?php echo get_the_title($post->ID) ?></h2>
-                            <p class="txtupper"><?php echo get_field('autor', $post->ID) ?></p>
-                        </button>
-                    <?php
-                    } // foreach ($textos as $post)
-                    wp_reset_postdata();
-                    ?>
-                </div>
-                <div class="col-lg-7">
-                    <?php
-                    foreach ($textos as $key => $post) {
-                        setup_postdata($post); ?>
-                        <div js-bloco="<?php echo $key + 1 ?>">
-                            <div class="editor">
-                                <?php echo get_field('conteudo', $post->ID) ?>
-                            </div>
+        <div class="d-none d-lg-block">
+            <div js-bloco-ativo class="inativo">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="bloco-botoes">
+                            <?php
+                            foreach ($textos as $key => $post) {
+                                setup_postdata($post); ?>
+                                <button js-btn-bloco="<?php echo $key + 1 ?>">
+                                    <h2 class="txtupper fs22"><?php echo get_the_title($post->ID) ?></h2>
+                                    <p class="txtupper"><?php echo get_field('autor', $post->ID) ?></p>
+                                </button>
+                            <?php
+                            } // foreach ($textos as $post)
+                            wp_reset_postdata();
+                            ?>
                         </div>
-                    <?php
-                    } // foreach ($textos as $post)
-                    wp_reset_postdata();
-                    ?>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="bloco-textos">
+                            <?php
+                            foreach ($textos as $key => $post) {
+                                setup_postdata($post); ?>
+                                <div js-bloco="<?php echo $key + 1 ?>">
+                                    <div class="editor">
+                                        <?php echo get_field('conteudo', $post->ID) ?>
+                                    </div>
+                                </div>
+                            <?php
+                            } // foreach ($textos as $post)
+                            wp_reset_postdata();
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="btn-mobile d-lg-none d-flex">
+        <div class="bloco-botoes d-lg-none">
             <?php
             foreach ($textos as $key => $post) {
                 setup_postdata($post); ?>
-                <a class="box" href="<?php echo get_post_permalink($post->ID) ?>">
-                    <h2 class="txtupper fs24"><?php echo get_the_title($post->ID) ?></h2>
+                <a href="<?php echo get_post_permalink($post->ID) ?>">
+                    <h2 class="txtupper fs22"><?php echo get_the_title($post->ID) ?></h2>
                     <p class="txtupper fw400"><?php echo get_field('autor', $post->ID) ?></p>
                 </a>
             <?php
@@ -58,9 +61,7 @@ $textos = get_posts($args); ?>
             wp_reset_postdata();
             ?>
         </div>
-        
     </div>
-
 </main>
 
 <?php get_footer(); ?>

@@ -21,7 +21,7 @@
                     ?>
                 </div>
             </div>
-            <div class="d-none col-lg-5 offset-lg-1 d-lg-flex">
+            <div class="col-lg-5 offset-lg-1 d-lg-flex">
                 <div class="imagem">
                     <?php $img = $imagem ?>
                     <img src='<?php echo $img['url'] ?>' loading='lazy' alt='<?php echo $img['alt'] ?>'>
