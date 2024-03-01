@@ -1,4 +1,8 @@
- <?php
+<?php
+// Template Name: Contato
+?>
+
+<?php
    get_header();
    $email = get_field('email', $post->ID);
    $fundo = get_field('fundo', $post->ID);

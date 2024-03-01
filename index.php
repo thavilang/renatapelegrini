@@ -1,3 +1,7 @@
+<?php
+// Template Name: Home
+?>
+
 <?php $galeria = get_field('galeria', $post->ID) ?>
 
 <?php get_header(); ?>

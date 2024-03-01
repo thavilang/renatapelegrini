@@ -1,5 +1,4 @@
 header {
-
     .logo {
         @extend %centralizar;
         z-index: 999;
@@ -11,11 +10,12 @@ header {
             top: 0;
             left: calc(5.2vw + #{$grid-gutter-width / 2});
             height: 80px;
-        }
 
-        @include media-breakpoint-down(md) {
-            body:not(.page-id-67) & {
+            @media(max-width: 1300px) {
                 left: #{$grid-gutter-width / 2};
+            }
+
+            @include media-breakpoint-down(md) {
                 height: 70px;
             }
         }
@@ -27,6 +27,10 @@ header {
             @include media-breakpoint-down(md) {
                 width: 165px;
                 height: 15px;
+            }
+
+            @media(max-width: 350px) {
+                width: 140px;
             }
         }
     }
@@ -40,6 +44,10 @@ header {
         z-index: 998;
         padding: 28px 0;
         transition: opacity 0.5s;
+
+        @media(max-width: 1300px) {
+            right: #{$grid-gutter-width / 2};
+        }
 
         @include media-breakpoint-down(md) {
             right: #{$grid-gutter-width / 2};
@@ -66,14 +74,62 @@ header {
             }
         }
 
-        .sub-menu{
+        .sub-menu {
             display: none;
         }
 
         &:not(.ativo) {
             opacity: 0;
             pointer-events: none;
-            z-index: -1;
+        }
+    }
+
+    #menu-language {
+        display: flex;
+        align-items: center;
+        margin: 0 -8px 0 20px;
+
+        @media(max-width: 350px) {
+            margin: 0 -5px 0 10px;
+        }
+
+        a {
+            display: block;
+            font-size: 12px;
+            line-height: 50px;
+            text-transform: uppercase;
+            padding: 0 8px;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            @media(max-width: 350px) {
+                padding: 0 5px;
+            }
+        }
+
+        body.home & {
+            position: fixed;
+            top: 15px;
+            right: calc(5.2vw + #{$grid-gutter-width / 2} + 70px);
+        }
+
+        @include media-breakpoint-down(xl) {
+            &,
+            body.home & {
+                position: fixed;
+                top: 16px;
+                right: calc(#{$grid-gutter-width / 2} + 65px);
+            }
+        }
+
+        @include media-breakpoint-down(md) {
+            &,
+            body.home & {
+                top: 10px;
+                right: calc(#{$grid-gutter-width / 2} + 46px);
+            }
         }
     }
 
@@ -94,8 +150,11 @@ header {
         color: #B3B3B3;
         transition: color 0.2s, background-color 0.2s, top 0.2s, opacity 0.2s;
 
-        @include media-breakpoint-down(md) {
+        @media(max-width: 1300px) {
             right: calc(#{$grid-gutter-width / 2} - 24px);
+        }
+
+        @include media-breakpoint-down(md) {
             width: 70px;
             height: 70px;
         }
@@ -159,10 +218,14 @@ header {
         border-bottom: 1px #151515 solid;
         transition: border 0.3s;
 
+        @media(max-width: 1300px) {
+            padding: 0;
+        }
+
         nav.aberto {
             transition: opacity 0.3s;
 
-            > ul {
+            >ul {
                 display: flex;
                 align-items: center;
                 margin: 0 -12px;
@@ -180,13 +243,14 @@ header {
                     }
                 }
 
-                > li{
+                >li {
                     position: relative;
 
-                    &.menu-item-has-children > a{
+                    &.menu-item-has-children>a {
                         display: flex;
                         align-items: center;
-                        &::after{
+
+                        &::after {
                             content: " ";
                             position: relative;
                             width: 10px;
@@ -197,7 +261,7 @@ header {
                         }
                     }
 
-                    .sub-menu{
+                    .sub-menu {
                         position: absolute;
                         top: 100%;
                         left: -8px;
@@ -207,19 +271,19 @@ header {
                         z-index: 999;
                         min-width: 100%;
                         transition: opacity 0.3s;
-    
-                        a{
+
+                        a {
                             font-size: var(--fonte-16px);
                             line-height: 1.2em;
                             padding: 10px 20px;
                         }
                     }
 
-                    &.menu-item-404 .sub-menu{
+                    &.menu-item-404 .sub-menu {
                         min-width: 240px;
                     }
 
-                    &:not(:hover) .sub-menu{
+                    &:not(:hover) .sub-menu {
                         opacity: 0;
                         visibility: hidden;
                         pointer-events: none;
@@ -248,27 +312,31 @@ header {
     }
 
     @include media-breakpoint-down(xl) {
-        nav.aberto{
-            display: none;
-        }
-    }
-    @include media-breakpoint-up(lg){
-        .menu-item-1042{
+        nav.aberto {
             display: none;
         }
     }
 
-    @include media-breakpoint-down(lg){
-        .menu-item-404{
+    @include media-breakpoint-up(lg) {
+        .menu-item-1042,
+        .menu-item-1169 {
+            display: none;
+        }
+    }
+
+    @include media-breakpoint-down(lg) {
+        .menu-item-404,
+        .menu-item-1158 {
             display: none;
         }
     }
 
     body.home & {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
         z-index: 999;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), transparent);
     }
 }

@@ -1,3 +1,7 @@
+<?php
+// Template Name: Texto
+?>
+
 <?php get_header(); ?>
 
 <main class="texto">

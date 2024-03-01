@@ -1,3 +1,7 @@
+<?php
+// Template Name: Projetos
+?>
+
 <?php get_header(); ?>
 
 <main id="projetos">

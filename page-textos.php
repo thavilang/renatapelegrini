@@ -1,4 +1,8 @@
 <?php
+// Template Name: Textos
+?>
+
+<?php
 $args = array(
     'posts_per_page'   => -1,
     'post_type'        => 'texto',

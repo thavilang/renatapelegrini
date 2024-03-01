@@ -1,3 +1,7 @@
+<?php
+// Template Name: Sobre
+?>
+
 <?php $texto = get_field('texto', $post->ID) ?>
 <?php $imagem = get_field('imagem', $post->ID) ?>
 

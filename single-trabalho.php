@@ -1,3 +1,7 @@
+<?php
+// Template Name: Trabalho
+?>
+
 <?php $galeria = get_field('galeria', $post->ID) ?>
 
 <?php get_header(); ?>
@@ -37,12 +41,12 @@
                 </div>
             </div>
             <div class="content-text">
-                <div class="texto">
-                    <p class=""><?php echo get_field('texto', $post->ID) ?></p>
+                <div class="editor texto">
+                    <?php echo get_field('texto', $post->ID) ?>
                 </div>
                 <hr class="d-flex d-lg-none">
-                <div class="descricao">
-                    <p class=""><?php echo get_field('descricao', $post->ID) ?></p>
+                <div class="editor descricao">
+                    <?php echo get_field('descricao', $post->ID) ?>
                 </div>
             </div>
         </div>

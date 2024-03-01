@@ -1,4 +1,8 @@
 <?php
+// Template Name: Clipping
+?>
+
+<?php
 get_header();
 ?>
 

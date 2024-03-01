@@ -38,13 +38,13 @@
                                 'depth' => '0',
                             ));
                             ?>
+                            <button class="toggle-menu" js-button-menu>
+                                MENU
+                                <canvas></canvas>
+                                <canvas></canvas>
+                                <canvas></canvas>
+                            </button>
                         </div>
-                        <button class="toggle-menu" js-button-menu>
-                            MENU
-                            <canvas></canvas>
-                            <canvas></canvas>
-                            <canvas></canvas>
-                        </button>
                         <nav class="fechado" js-menu>
                             <?php
                             wp_nav_menu(array(
