@@ -18,18 +18,27 @@
             <div class="container-fluid">
                 <div class="row justify-content-between align-items-center">
                     <div class="col-auto">
-                        <a href="<?php echo site_url() ?>" class="logo">CLIQUE PARA IR PARA A HOME<?php include 'assets/images/logo.svg'; ?></a>
+                        <a href="<?php echo site_url() ?>" class="logo"><?php include 'assets/images/logo.svg'; ?></a>
                     </div>
                     <div class="col-auto">
-                        <nav class="aberto">
+                        <div class="d-flex align-items-center">
+                            <nav class="aberto">
+                                <?php
+                                wp_nav_menu(array(
+                                    'theme_location' => 'header-menu',
+                                    'container' => false,
+                                    'depth' => '0',
+                                ));
+                                ?>
+                            </nav>
                             <?php
                             wp_nav_menu(array(
-                                'theme_location' => 'header-menu',
+                                'theme_location' => 'linguagem',
                                 'container' => false,
                                 'depth' => '0',
                             ));
                             ?>
-                        </nav>
+                        </div>
                         <button class="toggle-menu" js-button-menu>
                             MENU
                             <canvas></canvas>

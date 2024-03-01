@@ -82,7 +82,8 @@ remove_action('wp_print_styles', 'print_emoji_styles');
 if (function_exists('register_nav_menus')) {
     register_nav_menus(
         array(
-            'header-menu' => 'Header Menu'
+            'header-menu' => 'Header Menu',
+            'linguagem' => 'Linguagem'
         )
     );
 }
