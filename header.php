@@ -18,7 +18,7 @@
             <div class="container-fluid">
                 <div class="row justify-content-between align-items-center">
                     <div class="col-auto">
-                        <a href="<?php echo site_url() ?>" class="logo"><?php include 'assets/images/logo.svg'; ?></a>
+                        <a href="<?php echo pll_home_url() ?>" class="logo"><?php include 'assets/images/logo.svg'; ?></a>
                     </div>
                     <div class="col-auto">
                         <div class="d-flex align-items-center">

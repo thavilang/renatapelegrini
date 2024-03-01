@@ -1,7 +1,3 @@
-<?php
-// Template Name: Trabalho
-?>
-
 <?php $galeria = get_field('galeria', $post->ID) ?>
 
 <?php get_header(); ?>
@@ -25,7 +21,7 @@
             </div>
         </div>
         <div class="content ver-single">
-        <!-- <div class="content ver-gallery"> -->
+            <!-- <div class="content ver-gallery"> -->
             <div class="content-image">
                 <!-- Swiper -->
                 <div class="swiper" js-swiper-banner>

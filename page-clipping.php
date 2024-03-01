@@ -23,6 +23,11 @@ get_header();
             wp_reset_postdata();
             ?>
         </div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <button class="padrao-botao">carregar mais</button>
+            </div>
+        </div>
     </div>
 </main>
 
