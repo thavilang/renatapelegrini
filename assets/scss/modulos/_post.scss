@@ -46,24 +46,43 @@
 
         .post:nth-child(6n + 3) {
             max-width: 370px;
-            margin-top: 100px;
+            margin-top: 130px;
+
+            &:not(.horizontal) + .post + .post{                
+                margin-top: -100px;
+            }
+
+            &:not(.horizontal) + .post.horizontal + .post{                
+                margin-top: -200px;
+            }
         }
 
         .post:nth-child(6n + 4) {
             margin-left: -50px;
-            max-width: 370px;
-            margin-top: -50px;
+            margin-top: -80px;
+
+            &:not(.horizontal){
+                max-width: 370px;
+            }
         }
 
         .post:nth-child(6n + 5) {
             grid-column-start: 2;
-            margin-top: -100px;
+
+            &.horizontal{                
+                width: calc(100% + calc(var(--tamanho-borda) * 0.7));
+            }
         }
 
         .post:nth-child(6n) {
             grid-column: span 2;
             display: flex;
             justify-content: center;
+
+            &.vertical, &.quadrado{
+                max-width: 470px;
+                margin: 0 auto;
+            }
         }
     }
 

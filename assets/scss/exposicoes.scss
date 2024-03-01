@@ -1,7 +1,51 @@
 @import "style";
 @import "modulos/post";
 
-.exposicoes{
-    padding: 130px 0;
-    
+.exposicoes {
+    padding: 100px 0 130px;
+
+    @include media-breakpoint-down(lg){
+        padding: 20px 0 50px;
+    }
+}
+
+.menu-categorias{
+    display: flex;  
+    margin-bottom: 70px;  
+
+    a{
+        display: block;
+        font-weight: 400;
+        font-size: var(--fonte-24px);
+        line-height: 1em;
+        text-transform: uppercase;
+        color: #B3B3B3;
+        transition: color 0.3s;
+
+        &:hover, &.ativo{
+            color: #000;
+        }
+    }
+
+    li + li{
+        margin-left: 30px;
+    }
+
+    @include media-breakpoint-down(md){
+        margin-bottom: 40px;
+        li + li{
+            margin-left: 15px;
+        }
+    }
+}
+
+.post {
+    a {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+.padrao-botao{
+    margin-top: 60px;
 }

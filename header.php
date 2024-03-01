@@ -9,7 +9,7 @@
 </head>
 
 <body <?php body_class() ?>>
-
+    <?php include '_loader.php'; ?>
     <div id="skip-to-main">
         <a href="#main-content">Skip to main content</a>
     </div>

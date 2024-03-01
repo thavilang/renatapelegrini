@@ -10,7 +10,7 @@
         bottom: 0;
         background-color: #fff;
         z-index: 9990;
-        transition: opacity 0.3s;
+        transition: opacity 0.5s;
     }
 
     .loader.esconder {
@@ -31,7 +31,7 @@
             loader.classList.add('esconder');
             setTimeout(() => {
                 loader.classList.add('remover');
-            }, 40);
-        }, 10);
+            }, 500);
+        }, 20);
     });
 </script>
