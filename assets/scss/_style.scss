@@ -18,10 +18,10 @@ body {
     font-size: 1rem;
 
     @include media-breakpoint-down(xl){
-        padding-top: 80px;
+        &:not(.home){padding-top: 80px;}
     }
     @include media-breakpoint-down(md){
-        padding-top: 70px;
+        &:not(.home){padding-top: 70px;}
     }
 }
 
