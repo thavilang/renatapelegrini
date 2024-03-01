@@ -1,7 +1,7 @@
-let array = document.querySelectorAll('.grid-clipping div')
+let array = document.querySelectorAll(".grid-clipping div");
 
-array.forEach(element => {
-	element.classList.remove('efeito-aparecer')
+array.forEach((element) => {
+	element.classList.remove("efeito-aparecer");
 });
 
 let ultimaChamada = 0;
@@ -80,7 +80,7 @@ function more_ajax_scrolling(element) {
 				window.addEventListener("scroll", function () {
 					verificaVisibilidade(listaItens);
 				});
-				verificaVisibilidade(listaItens); 
+				verificaVisibilidade(listaItens);
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				$loader.html(jqXHR + " :: " + textStatus + " :: " + errorThrown);
@@ -89,7 +89,6 @@ function more_ajax_scrolling(element) {
 		return false;
 	});
 }
-
 
 function verificaVisibilidade(listaItens) {
 	listaItens.forEach(function (item) {
@@ -104,7 +103,7 @@ function elementoVisivel(elemento) {
 	var altura = window.innerHeight || document.documentElement.clientHeight;
 
 	// Verifica se pelo menos metade do elemento está visível
-	return posicao.top  / 2 < altura;
+	return posicao.top / 2 < altura;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
