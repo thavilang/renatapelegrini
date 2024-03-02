@@ -18,7 +18,7 @@
                 <?php
                 $args = array(
                     'posts_per_page'   => 9,
-                    'post_type'        => 'publicacao',
+                    'post_type'        => 'postagem',
                     'post_status'      => 'publish',
                 );
                 $textos = get_posts($args);

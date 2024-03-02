@@ -1,9 +1,9 @@
 <?php
 get_header();
-$categorias = get_terms( array(
+$categorias = get_terms(array(
     'taxonomy'   => 'categoria',
     'hide_empty' => false,
-) );
+));
 $taxonomy = get_queried_object();
 ?>
 
@@ -12,29 +12,40 @@ $taxonomy = get_queried_object();
     <div class="container">
         <ul class="menu-categorias">
             <?php foreach ($categorias as $categoria) { ?>
-                <li><a class="<?php echo $taxonomy->slug == $categoria->slug ? 'ativo' : ''; ?>" href="<?php echo site_url().'/categoria/'.$categoria->slug ?>"><?php echo $categoria->name ?></a></li>
-            <?php } // foreach $categorias ?>
-        </ul>
-        <div class="box-mansory">
-            <?php
-            $args = array( 
-                'posts_per_page'   => 6,
-                'post_type'        => 'exposicao',
-                'post_status'      => 'publish',
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'categoria',
-                        'field'    => 'slug',
-                        'terms'    => array($taxonomy->slug),
-                    ),
-                ),
-            );
-            $textos = get_posts($args);
-            foreach ($textos as $post) {
-                include 'elements/post-item.php';
-            } // foreach ($textos as $post)
-            wp_reset_postdata();
+                <li><a class="<?php echo $taxonomy->slug == $categoria->slug ? 'ativo' : ''; ?>" href="<?php echo site_url() . '/categoria/' . $categoria->slug ?>"><?php echo $categoria->name ?></a></li>
+            <?php } // foreach $categorias 
             ?>
+        </ul>
+        <?php
+        $args = array(
+            'posts_per_page'   => 6,
+            'post_type'        => 'exposicao',
+            'post_status'      => 'publish',
+        );
+
+        $tax_query = array(
+            array(
+                'taxonomy' => 'categoria',
+                'field'    => 'slug',
+                'terms'    => array($taxonomy->slug),
+            ),
+        );
+
+        $args['tax_query'] = $tax_query;
+
+        ?>
+        <div class="ajaxScrooling" data-posts_per_page="6" data-post_type="exposicao" data-post_status="publish" data-element_item="post-item" data-taxonomy="categoria" <?php
+                                                                                                                                                                            //data-tax_query='' deve ser usado com aspas simples apenas! 
+                                                                                                                                                                            ?> data-tax_query='<?php echo json_encode($tax_query) ?>'>
+            <div class="box-mansory content">
+                <?php
+                $textos = get_posts($args);
+                foreach ($textos as $post) {
+                    include 'elements/post-item.php';
+                } // foreach ($textos as $post)
+                wp_reset_postdata();
+                ?>
+            </div>
         </div>
     </div>
 </main>
