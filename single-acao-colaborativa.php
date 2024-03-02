@@ -20,8 +20,8 @@
                 <div class="swiper-button-prev"></div>
             </div>
         </div>
-        <div class="content ver-single">
-            <!-- <div class="content ver-gallery"> -->
+        <!-- <div class="content ver-single"> -->
+        <div class="content ver-gallery">
             <div class="content-image">
                 <!-- Swiper -->
                 <div class="swiper" js-swiper-banner>
