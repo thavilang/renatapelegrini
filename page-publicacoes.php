@@ -1,6 +1,7 @@
 <?php
-// Template Name: Blog
+// Template Name: Publicações
 ?>
+
 <?php get_header(); ?>
 
 <main>

@@ -1,0 +1,27 @@
+@import "style";
+@import 'modulos/post';
+@import 'modulos/pag-projetos-base';
+
+.grid-listagens {
+    .post img {
+        aspect-ratio: 1 / 1.56;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    @include media-breakpoint-up(md) {
+        .post:nth-child(3n + 1) {
+            margin-top: 100px;
+        }
+
+        .post:nth-child(3n) {
+            margin-top: 50px;
+        }
+    }
+
+    @include media-breakpoint-down(md){
+        .post:nth-child(even){
+            margin-top: 30px;
+        }
+    }
+}
