@@ -168,11 +168,24 @@ function more_ajax_scrolling()
     header("Content-Type: text/html");
 
     $args = array(
-        'post_type' => $post_type,
-        'posts_per_page' => $posts_per_page,
-        'post_status'      => $post_status,
-        'paged'    => $page,
+        'post_type'         => $post_type,
+        'posts_per_page'    => $posts_per_page,
+        'post_status'       => $post_status,
+        'paged'             => $page,
     );
+
+    if (isset($_POST['tax_query']) && !empty($_POST['tax_query'])) {
+        $parms_tax_query = json_decode(stripslashes($_POST['tax_query']))[0]; // Defina o segundo parâmetro como true para retornar um array associativo
+        // Agora você pode usar $tax_query como um array PHP normal
+        $tax_query = array(
+            array(
+                'taxonomy' => $parms_tax_query->taxonomy,
+                'field'    => $parms_tax_query->field,
+                'terms'    => $parms_tax_query->terms[0],
+            ),
+        );
+        $args['tax_query'] = $tax_query;
+    }
 
     $out = '';
     $countFunctionAjax = 0;
@@ -185,7 +198,7 @@ function more_ajax_scrolling()
             include 'elements/' . $_POST['element_item'] . '.php';
             $out .= ob_get_clean(); // Captura o conteúdo do buffer e limpa o buffer
         endwhile;
-    endif; 
+    endif;
     wp_reset_postdata();
 
     $return = array();

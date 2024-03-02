@@ -1,4 +1,4 @@
-let array = document.querySelectorAll(".grid-clipping div");
+let array = document.querySelectorAll(".efeito-aparecer");
 
 array.forEach((element) => {
 	element.classList.remove("efeito-aparecer");
@@ -36,24 +36,27 @@ var pageNumber = 1;
 
 function more_ajax_scrolling(element) {
 	jQuery(function ($) {
-		let posts_per_page = $(element).data("posts_per_page");
-		let post_type = $(element).data("post_type");
-		let post_status = $(element).data("post_status");
-		let element_item = $(element).data("element_item");
+		const params = {
+			post_type: $(element).data("post_type"),
+			posts_per_page: $(element).data("posts_per_page"),
+			post_status: $(element).data("post_status"),
+			element_item: $(element).data("element_item"),
+			tax_query: JSON.stringify($(element).data("tax_query")),
+		};
+
+		console.log(params.tax_query);
+
+		const queryString = Object.entries(params)
+			.filter(
+				([key, value]) => value !== undefined && value !== null && value !== ""
+			)
+			.map(([key, value]) => `&${key}=${value}`)
+			.join("");
 
 		pageNumber++;
+
 		var str =
-			"&pageNumber=" +
-			pageNumber +
-			"&posts_per_page=" +
-			posts_per_page +
-			"&post_type=" +
-			post_type +
-			"&post_status=" +
-			post_status +
-			"&element_item=" +
-			element_item +
-			"&action=more_ajax_scrolling";
+			"&pageNumber=" + pageNumber + queryString + "&action=more_ajax_scrolling";
 
 		$.ajax({
 			type: "POST",
@@ -64,21 +67,23 @@ function more_ajax_scrolling(element) {
 				dataParsed = JSON.parse(data);
 
 				if (dataParsed.count > 0) {
-
-					if($(element).find('.load-more').length == 0) {
-						$(element).append('<div class="row justify-content-center"><div class="col-auto"><button class="padrao-botao load-more">carregar mais</button></div></div>')
-						$(document).on('click', '.load-more', function() {
+					if ($(element).find(".load-more").length == 0) {
+						$(element).append(
+							'<div class="row justify-content-center"><div class="col-auto"><button class="padrao-botao load-more">carregar mais</button></div></div>'
+						);
+						$(document).on("click", ".load-more", function () {
 							more_ajax_scrolling(element);
 						});
 					}
 
-					$(element).find('.content').append(dataParsed.itens);
+					$(element).find(".content").append(dataParsed.itens);
 
-					if (dataParsed.count < posts_per_page) {
-						$(element).find('.load-more').hide();
+					if (dataParsed.count < params.posts_per_page) {
+						$(element).find(".load-more").hide();
 					}
 				} else {
 					$(element).addClass("stopAjax");
+					$(element).find(".load-more").hide();
 				}
 
 				var listaItens = document.querySelectorAll(
@@ -91,7 +96,7 @@ function more_ajax_scrolling(element) {
 				verificaVisibilidade(listaItens);
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
-				$loader.html(jqXHR + " :: " + textStatus + " :: " + errorThrown);
+				console.log(jqXHR + " :: " + textStatus + " :: " + errorThrown);
 			},
 		});
 		return false;
@@ -111,7 +116,7 @@ function elementoVisivel(elemento) {
 	var altura = window.innerHeight || document.documentElement.clientHeight;
 
 	// Verifica se pelo menos metade do elemento está visível
-	return posicao.top / 2 < altura;
+	return posicao.top + posicao.height / 2 < altura;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
