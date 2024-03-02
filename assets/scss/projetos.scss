@@ -1,90 +1,105 @@
+@import "plugins/swiper";
 @import "style";
+@import "modulos/post";
 
-#projetos{
-    .grid{
-        &+.grid{
-            margin: 130px 0 80px;
-        }
+
+section {
+    padding: 130px 0;
+
+    &+& {
+        border-top: 1px currentColor solid;
     }
-    .model-1{
-        .swiper-projetos{
-            .swiper-slide{
-                height: 610px;
-                img{
-                    min-height: 580px;
-                }
+
+    h2 {
+        margin-bottom: 10px;
+    }
+}
+
+.post a {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.bloco-acoes-colaborativas {
+    @include media-breakpoint-up(md) {
+        .swiper-slide:nth-child(3n + 1) {
+            .post,
+            .ver-mais {
+                margin-top: 50px;
             }
         }
-    }
-    .model-2{
-        .swiper-projetos{
-            .swiper-slide{
-                height: 350px;
-                img{
-                    min-height: 320px;
-                }
-            }
-        }
-    }
-    .model-3{
-        .swiper-projetos{
-            .swiper-slide{
-                height: 590px;
-                img{
-                    min-height: 560px;
-                }
+
+        .swiper-slide:nth-child(3n + 2) {
+            .post,
+            .ver-mais {
+                margin-top: 100px;
             }
         }
     }
-    .swiper-projetos {
-        width: 100%;
-        height: 100%;
-        .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            img {
-                display: block;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-            span{
-                font-size: var(--fonte-18px);
-                color: #0C0D14;
-                line-height: 1.21em;
-                width: 100%;
-                text-align: left;
-                margin-bottom: 8px;
-            }
-            &:last-of-type{
-                align-items: center;
-                justify-content: center;
-                a{
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    padding: 25px;
-                    background-color: #f1f1f1;
-                    border-radius: 20px;
-                    &:hover{
-                        background-color: #0C0D14;
-                        span,p{
-                            color: #f1f1f1;
-                        }
-                    }
-                    span,p{
-                        text-align: center;
-                    }
-                    p{
-                        font-size: 35px;
-                    }
-                }
+}
+
+.bloco-publicacao {
+    @include media-breakpoint-up(md) {
+        .swiper-slide:nth-child(3n + 1) {
+            .post,
+            .ver-mais {
+                margin-top: 125px;
             }
         }
+
+        .swiper-slide:nth-child(3n) {
+            .post,
+            .ver-mais {
+                margin-top: 25px;
+            }
+        }
+    }
+}
+
+.bloco-blog {
+    @include media-breakpoint-up(md) {
+        .swiper-slide:nth-child(odd) {
+
+            .post,
+            .ver-mais {
+                margin-top: 100px;
+            }
+        }
+    }
+}
+
+.ver-mais {
+    background-color: #FAFAFA;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    @extend %centralizar;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #e7e7e7;
+    }
+}
+
+.bloco-acoes-colaborativas,
+.bloco-publicacao {
+
+    .post img,
+    .ver-mais {
+        aspect-ratio: 1 / 1.56;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.bloco-blog {
+
+    .post img,
+    .ver-mais {
+        aspect-ratio: 1 / 0.85;
+        object-fit: cover;
+        object-position: center;
     }
 }
