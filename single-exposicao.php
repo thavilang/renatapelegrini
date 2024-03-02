@@ -24,16 +24,18 @@
         </div>
 
         <div class="d-lg-none">
-            <!-- Swiper -->
-            <div class="swiper" js-swiper-banner>
-                <div class="swiper-wrapper">
-                    <?php foreach ($galeria as $imagem) : ?>
-                        <div class="swiper-slide">
-                            <a data-src="<?php echo $imagem['sizes']['large']; ?>" data-fancybox="gallery">
-                                <img src="<?php echo $imagem['sizes']['large']; ?>" alt="<?php echo $imagem['alt']; ?>">
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
+            <div class="pagination-bg">
+                <!-- Swiper -->
+                <div class="swiper" js-swiper-banner>
+                    <div class="swiper-wrapper">
+                        <?php foreach ($galeria as $imagem) : ?>
+                            <div class="swiper-slide">
+                                <a data-src="<?php echo $imagem['sizes']['large']; ?>" data-fancybox="gallery">
+                                    <img src="<?php echo $imagem['sizes']['large']; ?>" alt="<?php echo $imagem['alt']; ?>">
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
