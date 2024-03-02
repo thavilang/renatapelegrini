@@ -1,0 +1,30 @@
+@import "style";
+@import 'modulos/post';
+@import 'modulos/pag-projetos-base';
+
+.grid-listagens {
+    grid-gap: 30px;
+    .post img {
+        aspect-ratio: 1 / 0.85;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    @include media-breakpoint-up(sm) {
+        .post:nth-child(even) {
+            margin-top: 100px;
+        }
+    }
+    @include media-breakpoint-down(sm){
+        grid-template-columns: 1fr;
+        grid-gap: 15px;
+
+        .post{
+            max-width: 80%;
+
+            &:nth-child(even) {
+                margin-left: auto;
+            }
+        }
+    }
+}
