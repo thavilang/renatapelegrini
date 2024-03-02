@@ -8,7 +8,17 @@
     <h1 class="hidden-text"><?php the_title(); ?></h1>
     <section class="bloco-acoes-colaborativas">
         <div class="container">
-            <h2 class="txtupper fs32"><?php echo get_the_title(pll_get_post(1031, pll_current_language())); ?></h2>
+            <div class="row g-0 justify-content-between align-items-center">
+                <div class="col">
+                    <h2 class="txtupper fs32"><?php echo get_the_title(pll_get_post(1031, pll_current_language())); ?></h2>
+                </div>
+                <div class="col-auto">
+                    <div class="navegacao-swiper">
+                        <button class="swiper-button-acoes-colaborativas-prev"></button>
+                        <button class="swiper-button-acoes-colaborativas-next"></button>
+                    </div>
+                </div>
+            </div>
             <div js-swiper="acoes-colaborativas">
                 <div class="swiper-wrapper">
                     <?php
@@ -34,7 +44,17 @@
     </section>
     <section class="bloco-blog">
         <div class="container">
-            <h2 class="txtupper fs32"><?php echo get_the_title(pll_get_post(1033, pll_current_language())); ?></h2>
+            <div class="row justify-content-between align-items-center">
+                <div class="col">
+                    <h2 class="txtupper fs32"><?php echo get_the_title(pll_get_post(1033, pll_current_language())); ?></h2>
+                </div>
+                <div class="col-auto">
+                    <div class="navegacao-swiper">
+                        <button class="swiper-button-blog-prev"></button>
+                        <button class="swiper-button-blog-next"></button>
+                    </div>
+                </div>
+            </div>
             <div js-swiper="blog">
                 <div class="swiper-wrapper">
                     <?php
@@ -60,8 +80,18 @@
     </section>
     <section class="bloco-publicacao">
         <div class="container">
-            <h2 class="txtupper fs32"><?php echo get_the_title(pll_get_post(1035, pll_current_language())); ?></h2>
-            <div js-swiper="publicacao">
+            <div class="row justify-content-between align-items-center">
+                <div class="col">
+                    <h2 class="txtupper fs32"><?php echo get_the_title(pll_get_post(1035, pll_current_language())); ?></h2>
+                </div>
+                <div class="col-auto">
+                    <div class="navegacao-swiper">
+                        <button class="swiper-button-publicacoes-prev"></button>
+                        <button class="swiper-button-publicacoes-next"></button>
+                    </div>
+                </div>
+            </div>
+            <div js-swiper="publicacoes">
                 <div class="swiper-wrapper">
                     <?php
                     $args = array(

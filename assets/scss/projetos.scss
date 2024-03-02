@@ -4,14 +4,20 @@
 
 
 section {
-    padding: 130px 0;
+    padding: clamp(50px, 6.7vw, 130px) 0;
 
     &+& {
         border-top: 1px currentColor solid;
     }
 
-    h2 {
-        margin-bottom: 10px;
+    [js-swiper] {
+        margin-top: 10px;
+    }
+
+    @include media-breakpoint-down(md){
+        h1 + &{
+            padding-top: 20px;
+        }
     }
 }
 
@@ -64,6 +70,15 @@ section {
             .ver-mais {
                 margin-top: 100px;
             }
+        }
+    }
+}
+
+@include media-breakpoint-down(md){
+    .swiper-slide:nth-child(odd) {
+        .post,
+        .ver-mais {
+            margin-top: 40px;
         }
     }
 }
