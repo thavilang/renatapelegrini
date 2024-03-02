@@ -18,6 +18,10 @@ header {
             @include media-breakpoint-down(md) {
                 height: 70px;
             }
+            
+            @include media-breakpoint-down(sm){
+                left: $grid-gutter-width;
+            }
         }
 
         svg {
@@ -157,6 +161,10 @@ header {
         @include media-breakpoint-down(md) {
             width: 70px;
             height: 70px;
+        }
+
+        @include media-breakpoint-down(sm){
+            right: calc(#{$grid-gutter-width} - 24px);
         }
 
         canvas {

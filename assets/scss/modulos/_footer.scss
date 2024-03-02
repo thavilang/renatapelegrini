@@ -1,24 +1,17 @@
 footer{
     background-color: #F2F2F2;
-    @include media-breakpoint-down(lg){
-        background-color: #D9D9D9;
-    }
+
     .content{
         display: flex;
         justify-content: space-between;
-        padding: 21px 0;
-        
-        @include media-breakpoint-down(lg){
-            padding: 21px 20px 19px;
-        }
+        padding: 20px 0;
+    
         p{
-            font-family: Inter;
             font-size: var(--fonte-13px);
             font-weight: 400;
-            line-height: 16px;
-            letter-spacing: 0em;
+            line-height: 1.2em;
             text-align: left;
-            color: #00000066;
+            color: rgba(#000, 0.4);
 
             @include media-breakpoint-down(sm){
                 font-size: 9px;
