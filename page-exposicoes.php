@@ -1,1 +1,0 @@
-<?php wp_redirect(site_url('categoria/individuais')); exit; ?>

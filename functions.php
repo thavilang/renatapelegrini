@@ -84,7 +84,8 @@ if (function_exists('register_nav_menus')) {
     register_nav_menus(
         array(
             'header-menu' => 'Header Menu',
-            'linguagem' => 'Linguagem'
+            'linguagem' => 'Linguagem',
+            'projetos' => 'Projetos'
         )
     );
 }
