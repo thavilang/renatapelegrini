@@ -1,5 +1,90 @@
 @import "plugins/fancybox";
 @import "style";
 @import "modulos/editor";
-
+@import "modulos/galeria";
 @import "modulos/single";
+
+.bloco-exposicao {
+    margin-top: 100px;
+    border-top: 1px currentColor solid;
+    padding-top: 100px;
+
+    @include media-breakpoint-down(md) {
+        margin-top: 40px;
+        padding-top: 40px;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        opacity: 0.6;
+        margin-bottom: 30px;
+    }
+
+    .padrao-botao {
+        margin: 50px auto 0;
+
+        @include media-breakpoint-down(md) {
+            margin-top: 30px;
+        }
+    }
+}
+
+/*
+.fancybox__toolbar,
+.fancybox__footer {
+    display: none;
+}
+
+@include media-breakpoint-down(lg) {
+    .fancybox__toolbar {
+        display: flex;
+
+        .is-left,
+        .is-middle {
+            display: none;
+        }
+
+        .is-right {
+            button:not(:last-of-type) {
+                display: none;
+            }
+        }
+    }
+}
+
+.fancybox__backdrop {
+    background: #000000B2;
+}
+
+.fancybox-image {
+    width: 90%;
+}
+
+.is-horizontal .fancybox__nav .f-button.is-next,
+.is-horizontal .fancybox__nav .f-button.is-prev {
+    svg {
+        stroke: black;
+    }
+}
+
+.is-horizontal .fancybox__nav .f-button.is-next {
+    right: 20%;
+}
+
+.is-horizontal .fancybox__nav .f-button.is-prev {
+    left: 20%;
+}
+
+@include media-breakpoint-down(lg) {
+    .is-horizontal .fancybox__nav .f-button.is-next {
+        right: 0;
+    }
+
+    .is-horizontal .fancybox__nav .f-button.is-prev {
+        left: 0;
+    }
+}
+*/

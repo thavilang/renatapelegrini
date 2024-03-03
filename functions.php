@@ -17,6 +17,7 @@ add_action('wp_enqueue_scripts', 'site_add_styles');
 function site_add_scripts()
 {
     wp_enqueue_script('swiper', get_template_directory_uri() . '/assets/js/plugins/swiper.min.js', array(), "", true);
+    wp_enqueue_script('fancybox', get_template_directory_uri() . '/assets/js/plugins/fancybox.min.js', array(), "", true);
     if (is_page_template('page-textos.php')) {
         wp_enqueue_script('abas', get_template_directory_uri() . '/assets/js/plugins/abas.js', array(), "", true);
     }

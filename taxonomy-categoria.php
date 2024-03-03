@@ -34,9 +34,7 @@ $taxonomy = get_queried_object();
         $args['tax_query'] = $tax_query;
 
         ?>
-        <div class="ajaxScrooling" data-posts_per_page="6" data-post_type="exposicao" data-post_status="publish" data-element_item="post-item" data-taxonomy="categoria" <?php
-                                                                                                                                                                            //data-tax_query='' deve ser usado com aspas simples apenas! 
-                                                                                                                                                                            ?> data-tax_query='<?php echo json_encode($tax_query) ?>'>
+        <div class="ajaxScrooling" data-posts_per_page="6" data-post_type="exposicao" data-post_status="publish" data-element_item="post-item" data-taxonomy="categoria" data-tax_query='<?php echo json_encode($tax_query) ?>'>
             <div class="box-mansory content">
                 <?php
                 $textos = get_posts($args);

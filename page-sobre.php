@@ -29,7 +29,6 @@
                 <div class="imagem">
                     <?php $img = $imagem ?>
                     <img src='<?php echo $img['url'] ?>' loading='lazy' alt='<?php echo $img['alt'] ?>'>
-
                 </div>
             </div>
         </div>
