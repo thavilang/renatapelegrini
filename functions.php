@@ -46,11 +46,11 @@ function auto_get_file_path()
 
         $nome_arquivo = $conteudo[1][0];
 
-        if (is_front_page()) {
-            $nome_arquivo = 'index';
-        } else if ($nome_arquivo == '' || $nome_arquivo == null) {
-            $nome_arquivo = 'index';
-        }
+        // if (is_front_page()) {
+        //     $nome_arquivo = 'index';
+        // } else if ($nome_arquivo == '' || $nome_arquivo == null) {
+        //     $nome_arquivo = 'index';
+        // }
     }
 
     $fileCSS = get_template_directory() . '/assets/css/' . $nome_arquivo . '.css';
