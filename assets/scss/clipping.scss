@@ -64,10 +64,6 @@ main {
                 transform: translateY(-40px);
             }
 
-            &:nth-child(even) a {
-                transform: translateY(40px);
-            }
-
             &:nth-child(9n + 2):not(.grande) {
                 margin-left: auto;
                 margin-right: 35px;
@@ -77,10 +73,6 @@ main {
             &:nth-child(9n + 4),
             &:nth-child(9n + 8) {
                 margin-left: auto;
-            }
-
-            &:nth-child(9n + 6) a {
-                transform: translateY(-40px);
             }
 
             &:nth-child(9n + 7) {

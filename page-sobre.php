@@ -28,7 +28,7 @@
             <div class="col-lg-5 offset-lg-1 d-lg-flex">
                 <div class="imagem">
                     <?php $img = $imagem ?>
-                    <img src='<?php echo $img['url'] ?>' loading='lazy' alt='<?php echo $img['alt'] ?>'>
+                    <img loading="lazy" src='<?php echo $img['url'] ?>' loading='lazy' alt='<?php echo $img['alt'] ?>'>
                 </div>
             </div>
         </div>

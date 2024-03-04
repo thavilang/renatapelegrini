@@ -19,7 +19,7 @@ include '_single.php';
                 foreach (get_field('galeria', pll_get_post($exposicoes, pll_current_language())) as $key => $imagem) {
                     $orientacaoImagem = $imagem['width'] > $imagem['height'] ? 'horizontal' : 'quadrado';
                     $orientacaoImagem = $imagem['width'] < $imagem['height'] ? 'vertical' : $orientacaoImagem; ?>
-                    <div class="grid-galeria__img <?php echo $orientacaoImagem ?>" gsap-aparecer-fade><img src="<?php echo $imagem['sizes']['medium'] ?>" alt="<?php echo $imagem['alt'] ?>"></div>
+                    <div class="grid-galeria__img <?php echo $orientacaoImagem ?>" gsap-aparecer-fade><div><img loading="lazy" src="<?php echo $imagem['sizes']['medium'] ?>" alt="<?php echo $imagem['alt'] ?>"></div></div>
                 <?php
                     if ($key >= 2) {
                         break;

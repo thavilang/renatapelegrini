@@ -4,10 +4,6 @@
 @import "modulos/galeria";
 @import "modulos/single";
 
-.content__texto {
-    max-width: 570px;
-}
-
 @include media-breakpoint-down(lg) {
     .grid-galeria {
         display: none;

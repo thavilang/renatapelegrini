@@ -1,14 +1,30 @@
 @import "style";
 
-.breadcrumb{
+.breadcrumb {
     display: flex;
     align-items: center;
-    margin: 0 0 25px;
-    span{
-        font-size: var(--fonte-12px);
-        color: #858585;
-        line-height: 1.6em;
-        margin-left: 6px;
+    margin-bottom: 15px;
+    font-size: var(--fonte-16px);
+    color: #858585;
+    line-height: 1.6em;
+    width: fit-content;
+    text-transform: lowercase;
+    transition: color 0.3s;
+
+    svg {
+        width: 8px;
+        height: 13px;
+        fill: #B6B6B6;
+        margin-right: 6px;
+        transition: color 0.3s;
+    }
+
+    &:hover {
+        color: #000;
+
+        svg {
+            fill: currentColor;
+        }
     }
 }
 

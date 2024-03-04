@@ -1,12 +1,14 @@
 <?php
 $galeria = get_field('galeria', $post->ID);
-$count = count($galeria);
-$orientacaoImagem = $galeria[0]['width'] > $galeria[0]['height'] ? 'horizontal' : 'quadrado';
-$orientacaoImagem = $galeria[0]['width'] < $galeria[0]['height'] ? 'vertical' : $orientacaoImagem;
-$formatoPagina = $count == 1 && $orientacaoImagem == 'vertical' ? 'coluna' : 'linha';
+if ($galeria) {
+    $count = count($galeria);
+    $orientacaoImagem = $galeria[0]['width'] > $galeria[0]['height'] ? 'horizontal' : 'quadrado';
+    $orientacaoImagem = $galeria[0]['width'] < $galeria[0]['height'] ? 'vertical' : $orientacaoImagem;
+    $formatoPagina = $count == 1 && $orientacaoImagem == 'vertical' ? 'coluna' : 'linha';
+}
 ?>
 
-<main class="<?php echo $formatoPagina; ?>">
+<main class="<?php echo $galeria ? $formatoPagina : 'linha'; ?>">
     <div class="container">
         <a class="breadcrumb" href="<?php echo get_the_permalink(pll_get_post($back, pll_current_language())) ?>">
             <?php include 'assets/images/seta.svg'; ?>
@@ -17,7 +19,7 @@ $formatoPagina = $count == 1 && $orientacaoImagem == 'vertical' ? 'coluna' : 'li
             <p class="fs28 categoria"><?php echo get_field('tipo_trabalho', $post->ID)->name ?></p>
         <?php } // if $post->post_type == 'trabalho' 
         ?>
-        <?php if ($formatoPagina == 'linha') { ?>
+        <?php if ($galeria && $formatoPagina == 'linha' && $count > 1) { ?>
             <div class="navegacao-swiper__bloco">
                 <div class="row justify-content-end">
                     <div class="col-auto">
@@ -30,20 +32,24 @@ $formatoPagina = $count == 1 && $orientacaoImagem == 'vertical' ? 'coluna' : 'li
             </div>
         <?php } // $formatoPagina == 'linha' 
         ?>
+
         <div class="content">
-            <div class="content__imagem">
-                <div class="swiper" js-swiper-galeria>
-                    <div class="swiper-wrapper">
-                        <?php foreach ($galeria as $imagem) : ?>
-                            <div class="swiper-slide">
-                                <a href="<?php echo $imagem['sizes']['large']; ?>" data-fancybox="gallery">
-                                    <img src="<?php echo $imagem['sizes']['medium']; ?>" alt="<?php echo $imagem['alt']; ?>">
-                                </a>
-                            </div>
-                        <?php endforeach; ?>
+            <?php if (!empty($galeria)) { ?>
+                <div class="content__imagem">
+                    <div class="swiper" js-swiper-galeria>
+                        <div class="swiper-wrapper">
+                            <?php foreach ($galeria as $imagem) : ?>
+                                <div class="swiper-slide">
+                                    <a href="<?php echo $imagem['sizes']['large']; ?>" data-fancybox="gallery">
+                                        <img loading="lazy" src="<?php echo $imagem['sizes']['medium']; ?>" alt="<?php echo $imagem['alt']; ?>">
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php } // if-empty $galeria 
+            ?>
             <div class="content__texto">
                 <div class="editor texto">
                     <?php echo get_field('texto', $post->ID) ?>

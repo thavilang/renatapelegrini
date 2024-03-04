@@ -4,11 +4,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <a class="breadcrumb" href="https://renatapelegrini.thavi.dev/textos/">
-                    <svg width="6" height="13" viewBox="0 0 6 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M-2.84124e-07 6.5L6 0.870834L6 12.1292L-2.84124e-07 6.5Z" fill="#B6B6B6" />
-                    </svg>
-                    <span>Textos</span>
+                <a class="breadcrumb" href="<?php echo get_the_permalink(pll_get_post(61, pll_current_language())) ?>">
+                    <?php include 'assets/images/seta.svg'; ?>
+                    <span><?php echo get_the_title(pll_get_post(61, pll_current_language())); ?></span>
                 </a>
                 <div class="box">
                     <h1 class="txtupper fs22"><?php echo get_the_title($post->ID) ?></h1>

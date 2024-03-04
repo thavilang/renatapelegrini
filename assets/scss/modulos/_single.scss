@@ -1,6 +1,6 @@
-:root{
+:root {
     --fancybox-accent-color: #000;
-    --fancybox-bg: rgba(0,0,0, 0.7);
+    --fancybox-bg: rgba(0, 0, 0, 0.7);
 }
 
 main {
@@ -40,6 +40,7 @@ main {
 
     h1 {
         margin-bottom: 10px;
+        max-width: 30ch;
     }
 
     .categoria {
@@ -75,7 +76,7 @@ main {
             }
 
             .descricao {
-                color: #858585;
+                opacity: 0.6;
 
                 @include media-breakpoint-down(md) {
                     position: relative;
@@ -106,19 +107,20 @@ main {
                 display: block;
             }
 
-            >div {
-                flex-grow: 1;
-                flex-basis: 0;
-            }
+            @include media-breakpoint-up(md) {
+                >div {
+                    flex-grow: 1;
+                    flex-basis: 0;
+                    max-width: 50%;
+                }
 
-            .descricao {
-                @include media-breakpoint-up(md) {
+                .descricao {
                     padding-left: calc(var(--tamanho-coluna));
                 }
             }
         }
 
-        &__imagem a img{
+        &__imagem a img {
             max-height: 800px;
         }
     }
@@ -127,9 +129,10 @@ main {
         @include media-breakpoint-up(md) {
             display: flex;
             flex-direction: row-reverse;
+            align-items: flex-start;
 
             &__imagem {
-                max-width: calc(var(--tamanho-coluna) * 7);
+                width: calc(var(--tamanho-coluna) * 7);
 
                 img {
                     object-position: top;
@@ -138,6 +141,8 @@ main {
 
             &__texto {
                 margin-right: 30px;
+                flex-grow: 1;
+                flex-basis: 0;
 
                 .texto {
                     margin-bottom: 40px;
