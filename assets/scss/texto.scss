@@ -28,28 +28,42 @@
     }
 }
 
-.texto{
-    padding: 12px 0 50px;
+.texto {
+    padding: 100px 0 150px;
 
-    .box{
+    @include media-breakpoint-down(lg) {
+        padding: 20px 0 100px;
+    }
+
+    .box {
         width: 100%;
         display: flex;
         flex-direction: column;
-        h1{
+
+        h1 {
             max-width: 25ch;
             text-align: left;
             margin-bottom: 15px;
         }
-        p{
+
+        p {
             width: 100%;
             text-align: right;
             font-size: var(--fonte-16px);
         }
     }
-    .content{
+
+    .content {
         border-left: 1px solid #000000;
         border-top: 1px solid #000000;
         padding: 15px 0 0 17px;
         margin-top: 15px;
+
+        @include media-breakpoint-up(lg) {
+            border-left: 8px solid #0C0D14;
+            border-top: 8px solid #0C0D14;
+            padding: 32px 0 0 34px;
+            margin-top: 30px;
+        }
     }
 }
