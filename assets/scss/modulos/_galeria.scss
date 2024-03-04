@@ -10,7 +10,9 @@
         justify-content: center;
 
         img {
+            display: block;
             max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
             object-position: center;
         }
@@ -18,7 +20,7 @@
 
     @include media-breakpoint-up(lg) {
         &__img {
-            &:nth-child(5n + 2) img {
+            &:nth-child(5n + 2) >div {
                 margin-top: 100px;
             }
 
@@ -27,21 +29,27 @@
             &:nth-child(5n) {
                 grid-column: span 2;
 
-                &.vertical img,
-                &.quadrado img {
+                &.vertical >div,
+                &.quadrado >div {
                     max-height: 645px;
                 }
             }
 
             &:nth-child(5n + 3) {
-                &.horizontal img {
+                &.horizontal >div {
                     margin-left: calc(var(--tamanho-borda) * -0.6);
+                    max-width: calc(var(--tamanho-container) - var(--tamanho-coluna));
                 }
             }
 
             &:nth-child(5n + 4) {
-                &.horizontal img {
+                &.horizontal >div {
                     margin-right: calc(var(--tamanho-borda) * -0.6);
+                    max-width: calc(var(--tamanho-container) - var(--tamanho-coluna));
+                }
+                &.vertical, &.quadrado{
+                    justify-content: flex-start;
+                    padding-left: calc(var(--tamanho-coluna) * 2);
                 }
             }
         }
@@ -56,7 +64,7 @@
 
             &.vertical,
             &.quadrado {
-                img {
+                >div {
                     max-height: 50vw;
                 }
             }
@@ -66,7 +74,7 @@
             }
 
             &:nth-child(3n + 1).horizontal {
-                img {max-width: 54vw;}
+                >div {max-width: 54vw;}
             }
 
             &:nth-child(3n + 1).vertical + div.vertical:nth-child(3n + 2){

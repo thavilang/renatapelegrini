@@ -1,15 +1,7 @@
-new Swiper('[js-swiper-banner]', {
+new Swiper('[js-swiper-galeria]', {
     loop: true,
-    // autoplay: {
-    //     delay: 10000,
-    //     disableOnInteraction: false,
-    // },
     navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+        nextEl: ".swiper-button-galeria-next",
+        prevEl: ".swiper-button-galeria-prev",
     },
 });
-
-Fancybox.bind('[data-fancybox="gallery"]', {
-    //
-  }); 
