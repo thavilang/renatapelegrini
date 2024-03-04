@@ -6,7 +6,7 @@
 
     &__img {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
 
         img {
@@ -29,8 +29,8 @@
             &:nth-child(5n) {
                 grid-column: span 2;
 
-                &.vertical >div,
-                &.quadrado >div {
+                &.vertical >div img,
+                &.quadrado >div img {
                     max-height: 645px;
                 }
             }

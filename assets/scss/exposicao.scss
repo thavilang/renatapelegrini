@@ -4,25 +4,31 @@
 @import "modulos/galeria";
 @import "modulos/single";
 
-.content__texto{
+.content__texto {
     max-width: 570px;
 }
 
-@include media-breakpoint-down(lg){
-    .grid-galeria{
+@include media-breakpoint-down(lg) {
+    .grid-galeria {
         display: none;
     }
 }
 
-.grid-galeria__img{
-    div{background-color: #000;}
+.grid-galeria {
+    margin-top: 40px;
 
-    img{
-        display: block;
-        transition: opacity 0.5s;
-    }
+    &__img {
+        div {
+            background-color: #000;
+        }
 
-    &:hover img{
-        opacity: 0.7;
+        img {
+            display: block;
+            transition: opacity 0.5s;
+        }
+
+        &:hover img {
+            opacity: 0.7;
+        }
     }
 }
