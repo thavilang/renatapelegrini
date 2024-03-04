@@ -10,9 +10,9 @@ if (!empty($imagem)) {
     <a class="efeito-aparecer" href="<?php echo get_the_permalink($post->ID); ?>">
         <div class="post__img"><img loading="lazy" src="<?php echo $imagem['sizes']['medium'] ?? get_image('placeholder.jpg');?>" alt="<?php echo $imagem['alt'] ?>"></div>
         <h2>
-            <?php if ($post->post_type == 'exposicao') { ?>            
+            <?php /* if ($post->post_type == 'exposicao') { ?>            
                 [<?php echo get_field('status', $post->ID) ?>] 
-            <?php } // if $post->post_type == 'exposicao' ?>
+            <?php } // if $post->post_type == 'exposicao' */ ?>
             <?php echo get_the_title($post->ID) ?>
         </h2>
     </a>

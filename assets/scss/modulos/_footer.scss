@@ -4,7 +4,12 @@ footer{
     .content{
         display: flex;
         justify-content: space-between;
-        padding: 20px 0;
+        padding: 10px 0;
+
+        svg{
+            width: 160px;
+            height: 16px;
+        }
     
         p{
             font-size: var(--fonte-13px);
@@ -15,6 +20,10 @@ footer{
 
             @include media-breakpoint-down(sm){
                 font-size: 9px;
+            }
+
+            a:hover{
+                text-decoration: underline;
             }
         }
     }
