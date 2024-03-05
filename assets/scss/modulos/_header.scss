@@ -5,7 +5,7 @@ header {
         font-size: 0px;
         color: transparent;
 
-        body:not(.page-id-67) & {
+        body:not(.page-id-67):not(.page-id-1135) & {
             position: fixed;
             top: 0;
             left: calc(5.2vw + #{$grid-gutter-width / 2});
@@ -309,7 +309,8 @@ header {
         }
 
         body:not(.home) &:not(.scroll),
-        body.page-id-67 & {
+        body.page-id-67 &,
+        body.page-id-1135 & {
             .toggle-menu {
                 opacity: 0;
                 z-index: -1;
@@ -318,7 +319,7 @@ header {
         }
 
         body.home &,
-        body:not(.page-id-67) &.scroll {
+        body:not(.page-id-67):not(.page-id-1135) &.scroll {
             border-bottom: transparent;
 
             nav.aberto {
