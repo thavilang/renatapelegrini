@@ -10,8 +10,8 @@ main {
 
 .grid-clipping {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: calc(var(--tamanho-coluna)*1) calc(var(--tamanho-coluna)*1.4);
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
     margin-top: 40px;
 
     @include media-breakpoint-down(md){
@@ -21,11 +21,25 @@ main {
     }
 
     >div {
+        display: flex;
+        align-items: center;
         a {
             display: block;
+            width: 100%;
             background: #D9D9D9;
-            padding: 30px;
             transition: background-color 0.3s;
+
+            > div{
+                padding: 20px;
+            }
+
+            img{
+                width: 100%;
+                aspect-ratio: 1 / 0.7;
+                object-fit: cover;
+                object-position: center;
+
+            }
 
             h2 {
                 line-height: 1.22em;
@@ -39,59 +53,6 @@ main {
 
             &:hover {
                 background: #cacaca;
-            }
-        }
-
-        @include media-breakpoint-up(md) {
-            &.pequeno {
-                display: flex;
-                align-items: flex-end;
-
-                a {
-                    max-width: 360px;
-                }
-            }
-
-            &.medio a {
-                max-width: 430px;
-            }
-
-            &.grande a {
-                max-width: 530px;
-            }
-
-            &:nth-child(odd) a {
-                transform: translateY(-40px);
-            }
-
-            &:nth-child(9n + 2):not(.grande) {
-                margin-left: auto;
-                margin-right: 35px;
-            }
-
-            &:nth-child(9n + 3),
-            &:nth-child(9n + 4),
-            &:nth-child(9n + 8) {
-                margin-left: auto;
-            }
-
-            &:nth-child(9n + 7) {
-                grid-column: span 2;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                a {
-                    transform: translateY(-40px);
-                }
-            }
-
-            &:nth-child(9n) {
-                margin-right: -30px;
-            }
-
-            &:nth-child(9n + 14) a {
-                transform: none;
             }
         }
     }

@@ -24,8 +24,8 @@ $textos = get_posts($args); ?>
                             foreach ($textos as $key => $post) {
                                 setup_postdata($post); ?>
                                 <button js-btn-bloco="<?php echo $key + 1 ?>">
-                                    <h2 class="txtupper fs22"><?php echo get_the_title($post->ID) ?></h2>
-                                    <p class="txtupper"><?php echo get_field('autor', $post->ID) ?></p>
+                                    <h2 class="fs22"><?php echo get_the_title($post->ID) ?></h2>
+                                    <p><?php echo get_field('autor', $post->ID) ?> | <?php echo get_field('ano', $post->ID) ?></p>
                                 </button>
                             <?php
                             } // foreach ($textos as $post)
@@ -40,7 +40,9 @@ $textos = get_posts($args); ?>
                                 setup_postdata($post); ?>
                                 <div js-bloco="<?php echo $key + 1 ?>">
                                     <div class="editor">
-                                        <?php echo get_field('conteudo', $post->ID) ?>
+                                        <p><strong><?php echo get_the_title($post->ID) ?></strong></p>
+                                        <?php echo get_field('conteudo', $post->ID) ?>                                        
+                                        <p style="text-align: right;"><em><?php echo get_field('autor', $post->ID) ?></em></p>
                                     </div>
                                 </div>
                             <?php

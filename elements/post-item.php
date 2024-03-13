@@ -5,15 +5,15 @@ if (!empty($imagem)) {
     $orientacaoImagem = $imagem['width'] > $imagem['height'] ? 'horizontal' : 'quadrado';
     $orientacaoImagem = $imagem['width'] < $imagem['height'] ? 'vertical' : $orientacaoImagem;    
 } // if-empty $imagem
+$local = get_field('local', $post->ID);
 ?>
 <div class="post <?php echo $imagem ? $orientacaoImagem : ''; ?>" gsap-aparecer-fade>
     <a class="efeito-aparecer" href="<?php echo get_the_permalink($post->ID); ?>">
         <div class="post__img"><img loading="lazy" src="<?php echo $imagem['sizes']['medium'] ?? get_image('placeholder.jpg');?>" alt="<?php echo $imagem['alt'] ?>"></div>
-        <h2>
-            <?php /* if ($post->post_type == 'exposicao') { ?>            
-                [<?php echo get_field('status', $post->ID) ?>] 
-            <?php } // if $post->post_type == 'exposicao' */ ?>
-            <?php echo get_the_title($post->ID) ?>
-        </h2>
+        <h2><?php echo get_the_title($post->ID) ?></h2>
+        <?php if ($post->post_type == 'exposicao') { ?>
+            <p><?php echo get_field('ano_exposicao', $post->ID)->name ?></p>
+            <p><?php echo $local ?></p>
+        <?php } ?>
     </a>
 </div> 

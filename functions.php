@@ -1,5 +1,4 @@
 <?php
-
 function site_add_styles()
 {
     if (is_single()) {
@@ -145,16 +144,59 @@ add_action('wp_enqueue_scripts', 'wpassist_remove_block_library_css');
 add_filter('show_admin_bar', '__return_false');
 
 //UTILITÁRIOS
-function get_image($image)
-{
-    return get_template_directory_uri() . '/assets/images/' . $image;
-}
-
 function sprite($icon, $title = '', $sprite = 'sprite')
 {
     return '<svg role="img" aria-label="Ícone ' . $title . '"><title>' . $title . '</title><use xlink:href="' . get_template_directory_uri() . '/assets/images/' . $sprite . '.svg#' . $icon . '" /></svg>';
 }
 
+function get_image($image)
+{
+    return get_template_directory_uri() . '/assets/images/' . $image;
+}
+
+function getImageWidth($image, $sizes){
+    switch ($sizes) {
+        case 'thumbnail':
+            $imgWidth = $image['sizes']['thumbnail-width'];
+            break;
+        case 'medium':
+            $imgWidth = $image['sizes']['medium-width'];
+            break;
+        case 'large':
+            $imgWidth = $image['sizes']['large-width'];
+            break;
+        default:            
+            $imgWidth = $image['width'];
+            break;
+    }
+    return $imgWidth;
+}
+
+function getImageSizes($image){
+    $retorno = '(max-width: '.getImageWidth($image,'thumbnail').'px) '.getImageWidth($image,'thumbnail').'px,
+                (max-width: '.getImageWidth($image,'medium').'px) '.getImageWidth($image,'medium').'px,
+                (max-width: '.getImageWidth($image,'large').'px) '.getImageWidth($image,'large').'px, '.getImageWidth($image,'default').'px';
+    return $retorno;
+}
+
+function getImageScrset($image){
+    $retorno = $image['sizes']['thumbnail'].' '.getImageWidth($image, 'thumbnail').'w, 
+             '.$image['sizes']['medium'].' '.getImageWidth($image, 'medium').'w, 
+             '.$image['sizes']['large'].' '.getImageWidth($image, 'large').'w';
+    return $retorno;
+}
+
+function console_log($output, $with_script_tags = true)
+{
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+        ');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
+}
+
+/*paginacação infinita*/
 
 function more_ajax_scrolling()
 {
@@ -209,3 +251,9 @@ function more_ajax_scrolling()
 
 add_action('wp_ajax_nopriv_more_ajax_scrolling', 'more_ajax_scrolling');
 add_action('wp_ajax_more_ajax_scrolling', 'more_ajax_scrolling');
+
+/*Polylang*/
+pll_register_string('renatapelegrini', 'Todos os direitos reservados');
+pll_register_string('renatapelegrini', 'ver mais');
+pll_register_string('renatapelegrini', 'próximo');
+pll_register_string('renatapelegrini', 'anterior');

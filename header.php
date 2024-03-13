@@ -19,10 +19,20 @@
             <div class="container-fluid">
                 <div class="row justify-content-between align-items-center">
                     <div class="col-auto">
-                        <a href="<?php echo pll_home_url() ?>" class="logo"><?php include 'assets/images/logo.svg'; ?></a>
-                    </div>
-                    <div class="col-auto">
                         <div class="d-flex align-items-center">
+                            <button class="toggle-menu" js-button-menu>
+                                MENU
+                                <canvas></canvas>
+                                <canvas></canvas>
+                                <canvas></canvas>
+                            </button>
+                            <?php
+                            wp_nav_menu(array(
+                                'theme_location' => 'linguagem',
+                                'container' => false,
+                                'depth' => '0',
+                            ));
+                            ?>
                             <nav class="aberto">
                                 <?php
                                 wp_nav_menu(array(
@@ -32,19 +42,6 @@
                                 ));
                                 ?>
                             </nav>
-                            <?php
-                            wp_nav_menu(array(
-                                'theme_location' => 'linguagem',
-                                'container' => false,
-                                'depth' => '0',
-                            ));
-                            ?>
-                            <button class="toggle-menu" js-button-menu>
-                                MENU
-                                <canvas></canvas>
-                                <canvas></canvas>
-                                <canvas></canvas>
-                            </button>
                         </div>
                         <nav class="fechado" js-menu>
                             <?php
@@ -55,6 +52,9 @@
                             ));
                             ?>
                         </nav>
+                    </div>
+                    <div class="col-auto">
+                        <a href="<?php echo pll_home_url() ?>" class="logo"><?php include 'assets/images/logo.svg'; ?></a>
                     </div>
                 </div>
             </div>

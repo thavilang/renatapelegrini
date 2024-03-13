@@ -15,7 +15,7 @@
         ));
         ?>
         <div class="ajaxScrooling" data-posts_per_page="9" data-post_type="acao-colaborativa" data-post_status="publish" data-element_item="post-item">
-            <div class="grid-listagens content">
+            <div class="grid-exposicoes content">
                 <?php
                 $args = array(
                     'posts_per_page'   => 9,

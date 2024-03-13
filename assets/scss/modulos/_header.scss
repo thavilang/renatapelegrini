@@ -8,11 +8,11 @@ header {
         body:not(.page-id-67):not(.page-id-1135) & {
             position: fixed;
             top: 0;
-            left: calc(5.2vw + #{$grid-gutter-width / 2});
+            right: calc(5.2vw + #{$grid-gutter-width / 2});
             height: 80px;
 
             @media(max-width: 1300px) {
-                left: #{$grid-gutter-width / 2};
+                right: #{$grid-gutter-width / 2};
             }
 
             @include media-breakpoint-down(md) {
@@ -20,7 +20,7 @@ header {
             }
             
             @include media-breakpoint-down(sm){
-                left: $grid-gutter-width;
+                right: $grid-gutter-width;
             }
         }
 
@@ -44,17 +44,17 @@ header {
         text-align: center;
         background-color: #FAFAFA;
         top: 105px;
-        right: calc(5.2vw + #{$grid-gutter-width / 2});
+        left: calc(5.2vw + #{$grid-gutter-width / 2});
         z-index: 998;
         padding: 28px 0;
         transition: opacity 0.5s;
 
         @media(max-width: 1300px) {
-            right: #{$grid-gutter-width / 2};
+            left: #{$grid-gutter-width / 2};
         }
 
         @include media-breakpoint-down(md) {
-            right: #{$grid-gutter-width / 2};
+            left: #{$grid-gutter-width / 2};
             top: 0;
             left: 0;
             width: 100%;
@@ -91,14 +91,14 @@ header {
     #menu-language {
         display: flex;
         align-items: center;
-        margin: 0 -8px 0 40px;
+        margin: 0 40px 0 -8px;
 
         @media(max-width: 1300px){            
-            margin: 0 -8px 0 30px;
+            margin: 0 30px 0 -8px;
         }
 
         @media(max-width: 350px) {
-            margin: 0 -5px 0 10px;
+            margin: 0 10px 0 -5px;
         }
 
         a {
@@ -120,7 +120,7 @@ header {
         body.home & {
             position: fixed;
             top: 15px;
-            right: calc(5.2vw + #{$grid-gutter-width / 2} + 70px);
+            left: calc(5.2vw + #{$grid-gutter-width / 2} + 70px);
         }
 
         @include media-breakpoint-down(xl) {
@@ -128,7 +128,7 @@ header {
             body.home & {
                 position: fixed;
                 top: 16px;
-                right: calc(#{$grid-gutter-width / 2} + 65px);
+                left: calc(#{$grid-gutter-width / 2} + 65px);
             }
         }
 
@@ -136,7 +136,7 @@ header {
             &,
             body.home & {
                 top: 10px;
-                right: calc(#{$grid-gutter-width / 2} + 46px);
+                left: calc(#{$grid-gutter-width / 2} + 46px);
             }
         }
     }
@@ -144,7 +144,7 @@ header {
     .toggle-menu {
         position: fixed;
         top: 0;
-        right: calc(5.2vw + #{$grid-gutter-width / 2} - 24px);
+        left: calc(5.2vw + #{$grid-gutter-width / 2} - 24px);
         z-index: 999;
         display: flex;
         align-items: center;
@@ -159,7 +159,7 @@ header {
         transition: color 0.2s, background-color 0.2s, top 0.2s, opacity 0.2s;
 
         @media(max-width: 1300px) {
-            right: calc(#{$grid-gutter-width / 2} - 24px);
+            left: calc(#{$grid-gutter-width / 2} - 24px);
         }
 
         @include media-breakpoint-down(md) {
@@ -168,7 +168,7 @@ header {
         }
 
         @include media-breakpoint-down(sm){
-            right: calc(#{$grid-gutter-width} - 24px);
+            left: calc(#{$grid-gutter-width} - 24px);
         }
 
         canvas {
@@ -330,20 +330,6 @@ header {
 
     @include media-breakpoint-down(xl) {
         nav.aberto {
-            display: none;
-        }
-    }
-
-    @include media-breakpoint-up(lg) {
-        .menu-item-1042,
-        .menu-item-1169 {
-            display: none;
-        }
-    }
-
-    @include media-breakpoint-down(lg) {
-        .menu-item-404,
-        .menu-item-1158 {
             display: none;
         }
     }
