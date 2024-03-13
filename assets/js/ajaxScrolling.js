@@ -2,7 +2,10 @@ let array = document.querySelectorAll(".efeito-aparecer");
 
 array.forEach((element) => {
 	element.classList.remove("efeito-aparecer");
+	element.classList.remove("mansory-item");
 });
+
+
 
 let ultimaChamada = 0;
 
@@ -80,6 +83,13 @@ function more_ajax_scrolling(element) {
 
 					if (dataParsed.count < params.posts_per_page) {
 						$(element).find(".load-more").hide();
+					}
+					if (document.querySelector('.grid-mansory')) {
+						let mansoryItens = document.querySelectorAll('.mansory-item');
+						mansoryGrid.appended(mansoryItens);
+						mansoryItens.forEach((element) => {
+							element.classList.remove("mansory-item");
+						});
 					}
 				} else {
 					$(element).addClass("stopAjax");

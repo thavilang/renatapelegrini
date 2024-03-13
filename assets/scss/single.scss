@@ -1,0 +1,17 @@
+@import "style";
+
+main{
+    min-height: 100vh;
+    padding: 100px 0 140px;
+
+    h1{
+        margin-bottom: 50px;
+        @include media-breakpoint-down(md){
+            margin-bottom: 30px;
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        padding: 25px 0 50px;
+    }
+}

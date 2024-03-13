@@ -1,0 +1,27 @@
+#welcome-panel,
+#dashboard_right_now,
+#dashboard_activity,
+#dashboard_primary{
+    display: none !important;
+}
+
+#site-dashboard-widget .menu{
+    padding-left: 30px;
+    padding-top: 0;
+}
+
+#site-dashboard-widget .menu a{
+    line-height: 30px;
+}
+
+#site-dashboard-widget .menu a:hover{
+    text-decoration: underline;
+}
+
+#site-dashboard-widget .menu a[href="#"]{
+    pointer-events: none;
+}
+
+#site-dashboard-widget .menu li > ul{
+    padding-left: 15px;
+}

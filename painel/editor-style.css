@@ -1,0 +1,20 @@
+table.table-view-list.pages tr#post-28,
+table.table-view-list.pages tr#post-57,
+table.table-view-list.pages tr#post-59,
+table.table-view-list.pages tr#post-1031,
+table.table-view-list.pages tr#post-1033,
+table.table-view-list.pages tr#post-1035,
+table.table-view-list.pages tr#post-61,
+table.table-view-list.pages tr#post-65,
+table.table-view-list.pages tr#post-1137,
+table.table-view-list.pages tr#post-1139,
+table.table-view-list.pages tr#post-1141,
+table.table-view-list.pages tr#post-1143,
+table.table-view-list.pages tr#post-1145,
+table.table-view-list.pages tr#post-1147,
+table.table-view-list.pages tr#post-1149,
+table.table-view-list.pages tr#post-1151,
+#adminmenu #menu-posts .wp-submenu li:nth-child(4),
+#adminmenu #menu-posts .wp-submenu li:nth-child(5){
+    display: none !important;
+}

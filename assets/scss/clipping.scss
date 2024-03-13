@@ -3,61 +3,68 @@
 main {
     padding: 120px 0 140px;
 
-    @include media-breakpoint-down(md){
+    @include media-breakpoint-down(md) {
         padding: 25px 0 50px;
     }
 }
 
-.grid-clipping {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 50px;
-    margin-top: 40px;
-
-    @include media-breakpoint-down(md){
-        grid-template-columns: 1fr;
-        grid-gap: 24px;
-        margin-top: 0;
-    }
-
-    >div {
-        display: flex;
-        align-items: center;
-        a {
-            display: block;
-            width: 100%;
-            background: #D9D9D9;
-            transition: background-color 0.3s;
-
-            > div{
-                padding: 20px;
-            }
-
-            img{
-                width: 100%;
-                aspect-ratio: 1 / 0.7;
-                object-fit: cover;
-                object-position: center;
-
-            }
-
-            h2 {
-                line-height: 1.22em;
-                margin-bottom: 0.72em;
-            }
-
-            p {
-                line-height: 1.6em;
-                color: #858585;
-            }
-
-            &:hover {
-                background: #cacaca;
-            }
+.grid-mansory{
+    max-height: 500vh;
+    transition: max-height 1s;
+    .clipping-item{
+        &:nth-child(2){
+            margin-top: 50px;
+        }
+        &:nth-child(4){
+            margin-top: 30px;
         }
     }
 }
 
-.padrao-botao{
+.espaco-botao{
+    min-height: 51px;
+    @include media-breakpoint-down(md){
+        min-height: 45px;
+    }
+}
+
+.clipping-item {
+    margin-bottom: 30px;
+
+    a {
+        display: block;
+        width: 100%;
+        background: #D9D9D9;
+        transition: background-color 0.3s;
+
+        >div {
+            padding: 20px;
+        }
+
+        img {
+            width: 100%;
+            aspect-ratio: 1 / 0.7;
+            object-fit: cover;
+            object-position: center;
+
+        }
+
+        h2 {
+            line-height: 1.22em;
+            margin-bottom: 0.72em;
+        }
+
+        p {
+            line-height: 1.6em;
+            color: #858585;
+        }
+
+        &:hover {
+            background: #cacaca;
+        }
+    }
+}
+
+.padrao-botao {
     margin-top: 90px;
 }

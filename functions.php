@@ -93,7 +93,6 @@ if (function_exists('register_nav_menus')) {
 add_action('admin_menu', 'remove_default_post_type');
 function remove_default_post_type()
 {
-    remove_menu_page('edit.php');
     remove_menu_page('edit-comments.php');
     $author = wp_get_current_user();
     if (isset($author->roles[0])) {
@@ -143,6 +142,52 @@ add_action('wp_enqueue_scripts', 'wpassist_remove_block_library_css');
 
 add_filter('show_admin_bar', '__return_false');
 
+//CSS ADMIN
+function custom_editor_css()
+{
+    // Replace 'custom-admnin-style.css' with the actual file path to your custom CSS.
+    $custom_css_file = get_template_directory_uri() . '/painel/editor-style.css';
+
+    // Enqueue the custom CSS file in the WordPress admin area.
+    wp_enqueue_style('custom-editor-css', $custom_css_file);
+}
+
+function manage_user_action()
+{
+    // get current login user's role
+    $roles = wp_get_current_user()->roles;
+
+    if (!in_array('administrator', $roles)) {
+        add_action('admin_enqueue_scripts', 'custom_editor_css');
+    }
+}
+add_action('admin_init', 'manage_user_action');
+
+/*reordenar menu*/
+function custom_menu_order($menu_ord)
+{
+    if (!$menu_ord) return true;
+    return array(
+        'index.php',
+        'separator1',
+        'edit.php?post_type=page',
+        'edit.php?post_type=trabalho',
+        'edit.php?post_type=exposicao',
+        'edit.php?post_type=acao-colaborativa',
+        'edit.php?post_type=postagem',
+        'edit.php?post_type=publicacao',
+        'edit.php?post_type=texto',
+        'edit.php?post_type=clipping',
+        'edit.php',
+        'separator2',
+        'upload.php'
+    );
+}
+
+add_filter('custom_menu_order', 'custom_menu_order');
+add_filter('menu_order', 'custom_menu_order');
+
+
 //UTILITÁRIOS
 function sprite($icon, $title = '', $sprite = 'sprite')
 {
@@ -154,7 +199,8 @@ function get_image($image)
     return get_template_directory_uri() . '/assets/images/' . $image;
 }
 
-function getImageWidth($image, $sizes){
+function getImageWidth($image, $sizes)
+{
     switch ($sizes) {
         case 'thumbnail':
             $imgWidth = $image['sizes']['thumbnail-width'];
@@ -165,24 +211,26 @@ function getImageWidth($image, $sizes){
         case 'large':
             $imgWidth = $image['sizes']['large-width'];
             break;
-        default:            
+        default:
             $imgWidth = $image['width'];
             break;
     }
     return $imgWidth;
 }
 
-function getImageSizes($image){
-    $retorno = '(max-width: '.getImageWidth($image,'thumbnail').'px) '.getImageWidth($image,'thumbnail').'px,
-                (max-width: '.getImageWidth($image,'medium').'px) '.getImageWidth($image,'medium').'px,
-                (max-width: '.getImageWidth($image,'large').'px) '.getImageWidth($image,'large').'px, '.getImageWidth($image,'default').'px';
+function getImageSizes($image)
+{
+    $retorno = '(max-width: ' . getImageWidth($image, 'thumbnail') . 'px) ' . getImageWidth($image, 'thumbnail') . 'px,
+                (max-width: ' . getImageWidth($image, 'medium') . 'px) ' . getImageWidth($image, 'medium') . 'px,
+                (max-width: ' . getImageWidth($image, 'large') . 'px) ' . getImageWidth($image, 'large') . 'px, ' . getImageWidth($image, 'default') . 'px';
     return $retorno;
 }
 
-function getImageScrset($image){
-    $retorno = $image['sizes']['thumbnail'].' '.getImageWidth($image, 'thumbnail').'w, 
-             '.$image['sizes']['medium'].' '.getImageWidth($image, 'medium').'w, 
-             '.$image['sizes']['large'].' '.getImageWidth($image, 'large').'w';
+function getImageScrset($image)
+{
+    $retorno = $image['sizes']['thumbnail'] . ' ' . getImageWidth($image, 'thumbnail') . 'w, 
+             ' . $image['sizes']['medium'] . ' ' . getImageWidth($image, 'medium') . 'w, 
+             ' . $image['sizes']['large'] . ' ' . getImageWidth($image, 'large') . 'w';
     return $retorno;
 }
 
@@ -257,3 +305,31 @@ pll_register_string('renatapelegrini', 'Todos os direitos reservados');
 pll_register_string('renatapelegrini', 'ver mais');
 pll_register_string('renatapelegrini', 'próximo');
 pll_register_string('renatapelegrini', 'anterior');
+
+/*CUSTOM WIDGET */
+if (function_exists('register_nav_menus')) {
+    register_nav_menus(
+        array(        
+            'dashboard-menu' => 'Dashboard Menu'
+        )
+    );
+}
+function dashboard_site_widget($callback_args, $widget){
+	return wp_nav_menu(array('theme_location' => 'dashboard-menu'));
+}
+
+add_action( 'wp_dashboard_setup', 'register_custom_dashboard_widget' );
+
+function register_custom_dashboard_widget(){
+	wp_add_dashboard_widget('site-dashboard-widget', 'Acesso Rápido', 'dashboard_site_widget');
+}
+
+function widget_css()
+{
+    // Replace 'custom-admnin-style.css' with the actual file path to your custom CSS.
+    $custom_css_file = get_template_directory_uri() . '/painel/widget-style.css';
+
+    // Enqueue the custom CSS file in the WordPress admin area.
+    wp_enqueue_style('widget-admin-css', $custom_css_file);
+}
+add_action('admin_enqueue_scripts', 'widget_css');
