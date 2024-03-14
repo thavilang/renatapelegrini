@@ -20,6 +20,9 @@ function site_add_scripts()
     if (is_page_template('page-textos.php')) {
         wp_enqueue_script('abas', get_template_directory_uri() . '/assets/js/plugins/abas.js', array(), "", true);
     }
+    if (is_page_template('page-clipping.php') || is_page_template('page-trabalhos.php')) {
+        wp_enqueue_script('mansory', get_template_directory_uri() . '/assets/js/plugins/masonry.pkgd.min.js', array(), "", true);
+    }
     wp_enqueue_script('ScrollTrigger', get_template_directory_uri() . '/assets/js/plugins/ScrollTrigger.min.js', array(), time(), true);
     wp_enqueue_script('gsap', get_template_directory_uri() . '/assets/js/plugins/gsap.min.js', array(), time(), true);
     wp_enqueue_script('animacoes', get_template_directory_uri() . '/assets/js/animacoes.js', array(), time(), true);

@@ -25,15 +25,4 @@ get_header();
     </div>
 </main>
 
-<script src="https://masonry.desandro.com/masonry.pkgd.js"></script>
-<script>
-    var grid = document.querySelector('.grid-mansory');
-    var mansoryGrid = new Masonry(grid, {
-        itemSelector: '.clipping-item',
-        horizontalOrder: true,
-        percentPosition: true
-    });
-</script>
-
-
 <?php get_footer() ?>

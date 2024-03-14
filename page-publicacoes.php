@@ -14,7 +14,7 @@
             'depth' => '0',
         ));
         ?>
-        <div class="ajaxScrooling" data-posts_per_page="9" data-post_type="publicacao" data-post_status="publish" data-element_item="post-item">
+        <div class="ajaxScrooling" data-posts_per_page="9" data-post_type="publicacao" data-post_status="publish" data-element_item="projeto-item">
             <div class="grid-exposicoes content">
                 <?php
                 $args = array(
@@ -24,7 +24,7 @@
                 );
                 $textos = get_posts($args);
                 foreach ($textos as $post) {
-                    include 'elements/post-item.php';
+                    include 'elements/projeto-item.php';
                 } // foreach ($textos as $post)
                 wp_reset_postdata();
                 ?>

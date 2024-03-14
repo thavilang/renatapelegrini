@@ -8,28 +8,48 @@ main {
     }
 }
 
-.grid-mansory{
-    max-height: 500vh;
-    transition: max-height 1s;
-    .clipping-item{
-        &:nth-child(2){
-            margin-top: 50px;
+.grid-mansory {
+    .clipping-item {
+        @include media-breakpoint-up(lg) {
+            &:nth-child(2) {
+                margin-top: 50px;
+            }
+
+            &:nth-child(4) {
+                margin-top: 30px;
+            }
         }
-        &:nth-child(4){
-            margin-top: 30px;
+        @include media-breakpoint-up(md){
+            &:nth-child(2) {
+                margin-top: 50px;
+            }
+
+            &:nth-child(3) {
+                margin-top: 30px;
+            }
+        }
+        @media(min-width: 401px){
+            &:nth-child(2) {
+                margin-top: 50px;
+            }
         }
     }
 }
 
-.espaco-botao{
+.espaco-botao {
     min-height: 51px;
-    @include media-breakpoint-down(md){
+
+    @include media-breakpoint-down(md) {
         min-height: 45px;
     }
 }
 
 .clipping-item {
     margin-bottom: 30px;
+
+    @media(max-width: 400px) {
+        width: 100%;
+    }
 
     a {
         display: block;

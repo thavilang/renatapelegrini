@@ -74,6 +74,13 @@
     }
 }
 
+.linha-botao-load-more{
+    min-height: 51px;
+    @include media-breakpoint-down(md){
+        min-height: 45px;
+    }
+}
+
 .efeito-aparecer{
     opacity: 0;
     transition: opacity 0.5s;

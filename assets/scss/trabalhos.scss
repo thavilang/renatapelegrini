@@ -12,3 +12,36 @@
 .padrao-botao{
     margin-top: 60px;
 }
+
+.grid-mansory {
+    margin: 0 -40px;
+
+    .post{
+        padding: 0 40px;
+        margin-bottom: 80px;
+
+        &:not(.horizontal):nth-child(3n + 2){
+            margin-top: 70px;
+        }
+        &:not(.horizontal):nth-child(3n){
+            margin-top: 40px;
+        }
+    }
+    .post__img img {
+        object-fit: cover;
+        object-position: center;
+
+    }
+
+    .post.horizontal {
+        .post__img img {
+            aspect-ratio: 1 / 0.586;
+        }
+    }
+
+    .post.vertical {
+        .post__img img {
+            aspect-ratio: 1 / 1.32;
+        }
+    }
+}

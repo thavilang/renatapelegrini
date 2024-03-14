@@ -4,7 +4,7 @@ $titulo = get_the_title($post->ID);
 $imagem = get_field('imagem', $post->ID);
 ?>
 
-<div class="efeito-aparecer mansory-item clipping-item col-lg-3">
+<div class="efeito-aparecer mansory-item clipping-item col-6 col-md-4 col-lg-3">
     <a href="<?php echo get_field('link', $post->ID) ?>" target="_blank" gsap-aparecer-fade>
         <?php if (!empty($imagem)) { ?>
             <img src="<?php echo $imagem['sizes']['thumbnail'] ?>" alt="<?php echo $titulo ?>">

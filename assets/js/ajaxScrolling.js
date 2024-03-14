@@ -1,7 +1,11 @@
 let array = document.querySelectorAll(".efeito-aparecer");
+let mansoryArray = document.querySelectorAll(".mansory-item");
 
 array.forEach((element) => {
 	element.classList.remove("efeito-aparecer");
+});
+
+mansoryArray.forEach((element) => {
 	element.classList.remove("mansory-item");
 });
 
@@ -72,7 +76,7 @@ function more_ajax_scrolling(element) {
 				if (dataParsed.count > 0) {
 					if ($(element).find(".load-more").length == 0) {
 						$(element).append(
-							'<div class="row justify-content-center"><div class="col-auto"><button class="padrao-botao load-more">carregar mais</button></div></div>'
+							'<div class="linha-botao-load-more"><div class="row justify-content-center"><div class="col-auto"><button class="padrao-botao load-more">carregar mais</button></div></div></div>'
 						);
 						$(document).on("click", ".load-more", function () {
 							more_ajax_scrolling(element);
@@ -84,7 +88,7 @@ function more_ajax_scrolling(element) {
 					if (dataParsed.count < params.posts_per_page) {
 						$(element).find(".load-more").hide();
 					}
-					if (document.querySelector('.grid-mansory')) {
+					if (document.querySelector('.grid-mansory') && window.innerWidth > 400) {
 						let mansoryItens = document.querySelectorAll('.mansory-item');
 						mansoryGrid.appended(mansoryItens);
 						mansoryItens.forEach((element) => {
