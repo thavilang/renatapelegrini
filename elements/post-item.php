@@ -7,7 +7,7 @@ if (!empty($imagem)) {
 } // if-empty $imagem
 $local = get_field('local', $post->ID);
 ?>
-<div class="post mansory-item <?php echo $orientacaoImagem == 'horizontal' ? 'col-lg-8 horizontal' : 'col-lg-4 vertical'; ?>" gsap-aparecer-fade>
+<div class="post mansory-item <?php echo $orientacaoImagem == 'horizontal' ? 'col-12 col-lg-8 horizontal' : 'col-7 col-sm-6 col-lg-4 vertical'; ?>" gsap-aparecer-fade>
     <a class="efeito-aparecer" href="<?php echo get_the_permalink($post->ID); ?>">
         <div class="post__img"><img loading="lazy" src="<?php echo $imagem['sizes']['medium'] ?? get_image('placeholder.jpg');?>" alt="<?php echo $imagem['alt'] ?>"></div>
         <h2><?php echo get_the_title($post->ID) ?></h2>

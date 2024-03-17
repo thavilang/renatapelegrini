@@ -7,7 +7,7 @@ get_header();
     <h1 class="hidden-text"><?php echo get_the_title(); ?></h1>
     <div class="container">
         <div class="ajaxScrooling" data-posts_per_page="12" data-post_type="clipping" data-post_status="publish" data-element_item="clipping-item">
-            <div class="grid-mansory row content">
+            <div js-quebra-mansory="400" class="grid-mansory row content">
                 <?php
                 $args = array(
                     'posts_per_page'   => 12,

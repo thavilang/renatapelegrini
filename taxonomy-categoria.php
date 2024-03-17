@@ -34,12 +34,12 @@ $taxonomy = get_queried_object();
         $args['tax_query'] = $tax_query;
 
         ?>
-        <div class="ajaxScrooling" data-posts_per_page="6" data-post_type="exposicao" data-post_status="publish" data-element_item="projeto-item" data-taxonomy="categoria" data-tax_query='<?php echo json_encode($tax_query) ?>'>
+        <div class="ajaxScrooling" data-posts_per_page="6" data-post_type="exposicao" data-post_status="publish" data-element_item="exposicao-item" data-taxonomy="categoria" data-tax_query='<?php echo json_encode($tax_query) ?>'>
             <div class="grid-exposicoes content">
                 <?php
                 $textos = get_posts($args);
                 foreach ($textos as $post) {
-                    include 'elements/projeto-item.php';
+                    include 'elements/exposicao-item.php';
                 } // foreach ($textos as $post)
                 wp_reset_postdata();
                 ?>

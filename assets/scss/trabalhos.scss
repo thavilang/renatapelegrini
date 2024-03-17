@@ -4,29 +4,66 @@
 .trabalhos {
     padding: 130px 0;
 
-    @include media-breakpoint-down(lg){
+    @include media-breakpoint-down(lg) {
         padding: 20px 0 50px;
     }
 }
 
-.padrao-botao{
+.padrao-botao {
     margin-top: 60px;
 }
 
 .grid-mansory {
-    margin: 0 -40px;
+    @include media-breakpoint-up(lg){
+        margin: 0 -40px; 
+    }
+    @include media-breakpoint-up(sm){
+        margin: 0 -20px; 
+    }
 
-    .post{
-        padding: 0 40px;
-        margin-bottom: 80px;
+    .post {
+        @include media-breakpoint-down(sm){
+            margin-bottom: 30px;
 
-        &:not(.horizontal):nth-child(3n + 2){
-            margin-top: 70px;
+            &:nth-child(even).vertical{
+                margin-left: 41.6666%;
+            }
         }
-        &:not(.horizontal):nth-child(3n){
-            margin-top: 40px;
+        @include media-breakpoint-up(sm){
+            padding: 0 20px;
+            margin-bottom: 40px;
+
+            &.vertical+.post.vertical {
+                margin-top: 30px;
+            }
+            &.vertical+.post.vertical+.post.vertical{
+                margin-top: 0;
+            }
+        }
+        @include media-breakpoint-up(lg) {
+            padding: 0 40px;
+            margin-bottom: 80px;
+
+            &.vertical+.post.vertical {
+                margin-top: 50px;
+            }
+
+            &.vertical+.post.vertical+.post.vertical,
+            &.horizontal+.post.vertical {
+                margin-top: 30px;
+            }
+
+            &.horizontal+.post.vertical+.post.horizontal+.post.vertical,
+            &.vertical+.post.vertical+.post.vertical+.post.vertical {
+                margin-top: 0;
+            }
+
+            &:not(.horizontal):nth-child(2) {
+                margin-top: 70px;
+            }
         }
     }
+
     .post__img img {
         object-fit: cover;
         object-position: center;

@@ -1,5 +1,10 @@
 let array = document.querySelectorAll(".efeito-aparecer");
 let mansoryArray = document.querySelectorAll(".mansory-item");
+let quebraMobile = 0;
+
+if (mansoryArray) {
+	quebraMobile = document.querySelector('[js-quebra-mansory]').getAttribute('js-quebra-mansory');
+}
 
 array.forEach((element) => {
 	element.classList.remove("efeito-aparecer");
@@ -88,7 +93,7 @@ function more_ajax_scrolling(element) {
 					if (dataParsed.count < params.posts_per_page) {
 						$(element).find(".load-more").hide();
 					}
-					if (document.querySelector('.grid-mansory') && window.innerWidth > 400) {
+					if (document.querySelector('.grid-mansory') && window.innerWidth > quebraMobile) {
 						let mansoryItens = document.querySelectorAll('.mansory-item');
 						mansoryGrid.appended(mansoryItens);
 						mansoryItens.forEach((element) => {
