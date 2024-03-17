@@ -2,8 +2,10 @@ let array = document.querySelectorAll(".efeito-aparecer");
 let mansoryArray = document.querySelectorAll(".mansory-item");
 let quebraMobile = 0;
 
-if (mansoryArray) {
+if (document.querySelector('[js-quebra-mansory]')) {
 	quebraMobile = document.querySelector('[js-quebra-mansory]').getAttribute('js-quebra-mansory');
+} else {
+	quebraMobile = 575;
 }
 
 array.forEach((element) => {
@@ -81,7 +83,7 @@ function more_ajax_scrolling(element) {
 				if (dataParsed.count > 0) {
 					if ($(element).find(".load-more").length == 0) {
 						$(element).append(
-							'<div class="linha-botao-load-more"><div class="row justify-content-center"><div class="col-auto"><button class="padrao-botao load-more">carregar mais</button></div></div></div>'
+							'<div class="row justify-content-center"><div class="col-auto"><button class="padrao-botao load-more">carregar mais</button></div></div>'
 						);
 						$(document).on("click", ".load-more", function () {
 							more_ajax_scrolling(element);

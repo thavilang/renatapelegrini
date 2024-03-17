@@ -8,7 +8,7 @@ $taxonomy = get_queried_object();
 ?>
 
 <main class="exposicoes">
-    <h1 class="hidden-text"><?php echo get_the_title(57); ?></h1>
+    <h1 class="hidden-text"><?php echo get_the_title(pll_get_post(57, pll_current_language())); ?></h1>
     <div class="container">
         <ul class="menu-categorias">
             <?php foreach ($categorias as $categoria) { ?>

@@ -29,9 +29,9 @@ if ($galeria) {
             </div>
         </div>
 
-        <h1 class="txtupper fs32 fw400"><?php echo get_the_title($post->ID) ?></h1>
+        <h1 class="fs32 fw400"><?php echo get_the_title($post->ID) ?></h1>
         <?php if ($post->post_type == 'trabalho') { ?>
-            <p class="fs28 categoria"><?php echo get_field('tipo_trabalho', $post->ID)->name; echo $post->post_type == 'trabalho' && $ano ? ' | '.$ano->name : ''; ?></p>
+            <p class="fs28 categoria"><?php echo $post->post_type == 'trabalho' && $ano ? $ano->name.' | ' : ''; echo get_field('tipo_trabalho', $post->ID)->name; ?></p>
         <?php } // if $post->post_type == 'trabalho' 
         ?>
         <?php if ($galeria && $formatoPagina == 'linha' && $count > 1) { ?>

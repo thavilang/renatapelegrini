@@ -2,6 +2,10 @@
     color: #363636;
     line-height: 1.6em;
 
+    span[style="font-weight: 400;"]{
+        font-weight: 300 !important;
+    }
+
     strong, b {
         font-weight: 600;
     }
