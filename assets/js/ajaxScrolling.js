@@ -38,7 +38,7 @@ document.addEventListener("scroll", function (e) {
 			return;
 		}
 
-		if (element.getBoundingClientRect().bottom < altura) {
+		if (element.getBoundingClientRect().top < altura) {
 			verificarChamada(element);
 		}
 	});
