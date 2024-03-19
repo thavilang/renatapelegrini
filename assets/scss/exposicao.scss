@@ -1,5 +1,6 @@
 @import "plugins/fancybox";
 @import "plugins/swiper";
+@import "plugins/abas";
 @import "style";
 @import "modulos/editor";
 @import "modulos/galeria";
@@ -27,5 +28,127 @@
         &:hover img {
             opacity: 0.7;
         }
+    }
+}
+
+.menu-categorias {
+    display: flex;
+    margin-bottom: 70px;
+
+    @include media-breakpoint-down(lg){
+        overflow: auto;
+        width: 100vw;
+        margin: 0 calc(var(--tamanho-borda) * -1) 40px;
+        padding: 0 var(--tamanho-borda);
+    }
+    @include media-breakpoint-down(sm){
+        margin: 0 -1.5rem 15px;
+        padding: 0 1.5rem 5px;
+    }
+
+
+    button {
+        display: block;
+        font-weight: 400;
+        font-size: var(--fonte-24px);
+        line-height: 1em;
+        text-transform: uppercase;
+        color: #B3B3B3;
+        white-space: nowrap;
+        transition: color 0.3s;
+
+        &:hover,
+        &.ativo {
+            color: #000;
+        }
+    }
+
+    button+button {
+        margin-left: 30px;
+    }
+
+    @include media-breakpoint-down(md) {
+        button+button {
+            margin-left: 15px;
+        }
+    }
+}
+
+main .content{
+    margin-top: 0;
+}
+
+main .categoria + .content{
+    margin-top: 40px;
+}
+main.linha .content__texto {
+    margin-top: 0;
+    @include media-breakpoint-up(sm) {
+        flex-direction: row;
+    }
+}
+
+.navegacao-swiper{
+    margin-bottom: 10px;
+}
+
+.editor.texto{
+    @include media-breakpoint-up(md){
+        max-width: 470px;
+    }
+}
+
+.editor.texto2{
+    margin-left: 30px;
+
+    img{
+        max-width: 100%;
+        margin-top: 0;
+
+        @include media-breakpoint-up(md){
+            max-width: 85%;
+            margin: 0 0 70px auto;
+        }
+    }
+
+    @include media-breakpoint-up(md){
+        > div{
+            max-width: 470px;
+        }
+    }
+
+    @include media-breakpoint-down(md){
+        margin-top: 30px;
+        margin-left: 0;
+    }
+}
+
+.grid-mansory{
+    margin-top: 85px;
+
+    &__img{
+        margin-bottom: 30px;
+
+        img{
+            max-width: 100%;
+        }
+
+        &.col-md-6:nth-child(2){
+            margin-top: 100px;
+        }
+
+        &:nth-child(4n + 2):not(.col-md-6){
+            margin-top: 70px;
+        }
+        &:nth-child(4n + 3):not(.col-md-6){
+            margin-top: 30px;
+        }
+        &:nth-child(4n):not(.col-md-6){
+            margin-top: 50px;
+        }
+    }
+
+    @include media-breakpoint-down(lg){
+        display: none;
     }
 }

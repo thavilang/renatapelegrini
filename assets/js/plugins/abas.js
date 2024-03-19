@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let elementoAtivo = grupo.getAttribute("js-bloco-ativo");
     if (elementoAtivo) {
       ativarBloco(grupo, elementoAtivo);
-      gruposAbas.classList.remove('inativo');
+      if (gruposAbas.classList) {
+        gruposAbas.classList.remove('inativo');
+      }
     }
   });
   let btnNavegacao = document.querySelectorAll("[js-btn-bloco]");
@@ -63,7 +65,9 @@ function ativarBloco(grupo, idBlocoAtivar) {
   botaoAtivo.setAttribute("aria-selected", "true");
   botaoAtivo.setAttribute("tabindex", "-1");
   blocoAtivo.setAttribute("tabindex", "0");
-  grupo.classList.remove('inativo');
+  if (grupo.classList) {
+    grupo.classList.remove('inativo');
+  }
 }
 function AbaRandomId() {
   let s4 = () => {
