@@ -17,8 +17,8 @@ $bloco = get_field('bloco', $post->ID);
     <div class="container">
         <div class="row justify-content-between">
             <?php
-            $next_post = get_next_post();
-            $prev_post = get_previous_post();
+            $next_post = get_next_post(true, '', 'categoria');
+            $prev_post = get_previous_post(true, '', 'categoria');
             ?>
             <div class="col-auto">
                 <?php if (is_a($next_post, 'WP_Post')) { ?>

@@ -2,7 +2,7 @@ footer {
     background-color: #F2F2F2;
     padding: 15px 0;
 
-    @include media-breakpoint-down(sm){
+    @include media-breakpoint-down(md){
         text-align: center;
         padding: 10px 0 20px;
     }
@@ -16,14 +16,14 @@ footer {
         line-height: 1.2em;
         color: rgba(#000, 0.4);
 
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-down(md) {
             font-size: 9px;
             margin-top: 10px;
         }
 
         a{
             display: inline-block;
-            margin: 0 0.7ch;
+            margin: 0 0.5ch;
 
             svg{
                 width: 2ch;
@@ -34,6 +34,18 @@ footer {
 
         a:hover {
             text-decoration: underline;
+        }
+
+        @include media-breakpoint-up(md){
+            &.direitos{
+                min-width: 193px;
+                text-align: left;
+                justify-content: flex-start;
+
+                @include media-breakpoint-up(xl){
+                    min-width: 217px;
+                }
+            }
         }
     }
 }

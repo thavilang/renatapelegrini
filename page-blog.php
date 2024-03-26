@@ -23,7 +23,7 @@
                 );
                 $textos = get_posts($args);
                 foreach ($textos as $post) {
-                    include 'elements/projeto-item.php';
+                    include 'elements/postagem-item.php';
                 } // foreach ($textos as $post)
                 wp_reset_postdata();
                 ?>

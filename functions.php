@@ -314,6 +314,7 @@ pll_register_string('renatapelegrini', 'anterior');
 pll_register_string('renatapelegrini', 'Erro 404');
 pll_register_string('renatapelegrini', 'Parece que a página que você está procurando não existe mais ou mudou de link.');
 pll_register_string('renatapelegrini', 'Ir para a página inicial');
+pll_register_string('renatapelegrini', '©2024 por');
 
 /*CUSTOM WIDGET */
 if (function_exists('register_nav_menus')) {

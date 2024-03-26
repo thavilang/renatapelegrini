@@ -1,8 +1,5 @@
 <?php
-get_header();
-
-$back = 1033;
-include '_single.php';
-
-get_footer();
+$link_blog = get_field('link_blog', $post->ID);
+wp_redirect($link_blog);
+exit;
 ?>

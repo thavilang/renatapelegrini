@@ -1,6 +1,7 @@
 <?php
 $galeria = get_field('galeria', $post->ID);
 $ano = get_field('ano_do_trabalho', $post->ID);
+$data = get_field('Data', $post->ID);
 if ($galeria) {
     $count = count($galeria);
     $orientacaoImagem = $galeria[0]['width'] > $galeria[0]['height'] ? 'horizontal' : 'quadrado';
@@ -31,7 +32,7 @@ if ($galeria) {
 
         <h1 class="fs32 fw400"><?php echo get_the_title($post->ID) ?></h1>
         <?php if ($post->post_type == 'trabalho') { ?>
-            <p class="fs28 categoria"><?php echo $post->post_type == 'trabalho' && $ano ? $ano->name.' | ' : ''; echo get_field('tipo_trabalho', $post->ID)->name; ?></p>
+            <p class="fs28 categoria"><?php echo $post->post_type == 'trabalho' && $data ? $data.' | ' : ''; echo get_field('tipo_trabalho', $post->ID)->name; ?></p>
         <?php } // if $post->post_type == 'trabalho' 
         ?>
         <?php if ($galeria && $formatoPagina == 'linha' && $count > 1) { ?>
